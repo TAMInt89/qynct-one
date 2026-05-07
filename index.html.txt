@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QYNCT ONE | Establishing Infinite Connections</title>
+    <link href="https://googleapis.com" rel="stylesheet">
+    <style>
+        body, html { margin: 0; padding: 0; background: #000; color: #fff; font-family: 'Inter', sans-serif; display: flex; align-items: center; justify-content: center; height: 100vh; overflow: hidden; }
+        .container { text-align: center; animation: fadeIn 2s ease-in-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        
+        /* SVG Logo Styling */
+        svg { filter: drop-shadow(0 0 20px rgba(0, 210, 255, 0.4)); width: 280px; height: auto; margin-bottom: 20px; }
+        
+        h2 { font-size: 14px; font-weight: 400; color: #888; letter-spacing: 5px; text-transform: uppercase; margin-top: 30px; }
+        .btn-enter { display: inline-block; margin-top: 40px; padding: 15px 40px; background: transparent; border: 1.5px solid #fff; color: #fff; text-decoration: none; border-radius: 40px; font-weight: 900; letter-spacing: 2px; font-size: 12px; transition: 0.4s; }
+        .btn-enter:hover { background: #fff; color: #000; box-shadow: 0 0 30px rgba(255, 255, 255, 0.3); transform: scale(1.05); }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- QYNCT ONE Official SVG Logo -->
+        <svg viewBox="0 0 400 400" fill="none" xmlns="http://w3.org">
+            <defs>
+                <filter id="glow" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="6" result="blur" /><feComposite in="SourceGraphic" in2="blur" operator="over" /></filter>
+                <linearGradient id="q_grad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#00d2ff" /><stop offset="100%" stop-color="#0072ff" /></linearGradient>
+            </defs>
+            <path d="M200 80C133.726 80 80 133.726 80 200C80 266.274 133.726 320 200 320C215 320 230 317 245 310M200 80C266.274 80 320 133.726 320 200C320 266.274 266.274 320 200 320M200 160C222.091 160 240 177.909 240 200C240 222.091 222.091 240 200 240C177.909 240 160 222.091 160 200C160 177.909 177.909 160 200 160Z" stroke="url(#q_grad)" stroke-width="12" stroke-linecap="round" filter="url(#glow)" />
+            <circle cx="200" cy="200" r="20" fill="#fff" filter="url(#glow)" />
+            <text x="50%" y="380" text-anchor="middle" font-family="'Inter', sans-serif" font-weight="900" font-size="34" fill="#fff" style="letter-spacing: 14px; text-transform: uppercase;">QYNCT ON<tspan fill="#00d2ff">≡</tspan></text>
+        </svg>
+
+        <p style="color: #666; max-width: 450px; margin: 0 auto; line-height: 1.6; letter-spacing: 1px;">Bridging the gap between physics and digital reality. A global deep-tech initiative by Toslim Asad Mahi.</p>
+        
+        <br>
+        <a href="https://onrender.com" class="btn-enter">LAUNCH ZYVACT</a>
+        
+        <h2>Global Operation Active</h2>
+    </div>
+</body>
+</html>
