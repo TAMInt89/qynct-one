@@ -3,93 +3,119 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Qynct One | The Sovereign Intelligence</title>
-    <link rel="stylesheet" href="style.css">
-    <!-- প্রফেশনাল থ্রি.জেএস ও গ্ল্যামারাস অ্যানিমেশন ইঞ্জিন -->
+    <title>Qynct One | The Sovereign Masterpiece</title>
+    <!-- Professional Core Engines -->
     <script src="https://cloudflare.com"></script>
-    <script src="https://cloudflare.com"></script>
-    <script src="https://cloudflare.com"></script>
+    <style>
+        :root { --accent: #0071e3; --white: #ffffff; --text: #1d1d1f; }
+        body { margin: 0; background: #fff; font-family: -apple-system, system-ui, sans-serif; color: var(--text); overflow-x: hidden; }
+        
+        /* মেগা ৩ডি ইন্টারফেস - যা তুমি চেয়েছো */
+        #render-stage { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; z-index: -1; background: radial-gradient(circle at center, #ffffff 0%, #f0f0f0 100%); }
+
+        nav { padding: 40px 60px; display: flex; justify-content: space-between; position: fixed; width: 100%; z-index: 1000; box-sizing: border-box; backdrop-filter: blur(30px); }
+        .logo { font-weight: 900; font-size: 26px; letter-spacing: -2px; }
+
+        .hero { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; pointer-events: none; }
+        .hero h1 { font-size: clamp(80px, 20vw, 250px); font-weight: 900; letter-spacing: -18px; line-height: 0.8; margin: 0; filter: drop-shadow(0 20px 50px rgba(0,0,0,0.05)); }
+        .hero p { font-size: 16px; letter-spacing: 12px; color: #86868b; text-transform: uppercase; margin-top: 50px; }
+
+        /* ডাইনামিক গ্লাস কার্ডস */
+        .mega-grid { padding: 150px 60px; max-width: 1600px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); gap: 60px; }
+        .glass-node { background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(50px); border-radius: 70px; padding: 100px 60px; border: 1px solid rgba(0,0,0,0.04); transition: 1s cubic-bezier(0.19, 1, 0.22, 1); }
+        .glass-node:hover { transform: translateY(-40px) scale(1.05); box-shadow: 0 60px 120px rgba(0,0,0,0.08); border: 1px solid var(--accent); }
+        .glass-node h2 { font-size: 48px; margin-bottom: 25px; letter-spacing: -2px; }
+
+        /* রাজকীয় মাস্টার ফুটার */
+        footer { background: #fbfbfb; padding: 150px 60px; border-top: 1px solid #d2d2d7; }
+        .signature-wrap { border-top: 1px solid #d2d2d7; padding-top: 100px; text-align: left; }
+        .name { font-size: clamp(40px, 8vw, 100px); font-weight: 800; margin: 0; letter-spacing: -4px; color: #000; }
+        .role { font-size: 12px; color: var(--accent); letter-spacing: 6px; text-transform: uppercase; margin-top: 10px; }
+    </style>
 </head>
 <body>
-    <!-- মহাজাগতিক ৩ডি স্টেজ -->
-    <canvas id="super-engine"></canvas>
 
-    <nav class="glass-nav">
-        <div class="brand">Qynct One</div>
-        <div class="nav-links">
-            <a href="#ecosystem">Ecosystem</a>
-            <a href="#sovereignty">Sovereignty</a>
-            <a href="#future">Vision 2050</a>
-            <a href="#auth" class="btn-primary">Reserve Global ID</a>
-        </div>
+    <canvas id="render-stage"></canvas>
+
+    <nav>
+        <div class="logo">Qynct One</div>
+        <div style="font-size: 11px; letter-spacing: 3px; font-weight: 700; color: var(--accent);">GLOBAL SOVEREIGN PROTOCOL</div>
     </nav>
 
-    <main>
-        <section class="hero-gate">
-            <h1 class="reveal-text">UNIFIED.</h1>
-            <div class="hero-scroll-info">Architected by Toslim Asad Mahi</div>
-        </section>
+    <section class="hero">
+        <h1>UNIFIED.</h1>
+        <p>Architected by Toslim Asad Mahi</p>
+    </section>
 
-        <section id="ecosystem" class="feature-suite">
-            <div class="grid-container">
-                <div class="node-card" data-tilt>
-                    <span class="protocol-id">PROTOCOL_01</span>
-                    <h2>Zyvact OS</h2>
-                    <p>The First Neural Social Interface. Operating on a Decentralized Satellite Mesh. Zero Network. Absolute Connection.</p>
-                </div>
-                <div class="node-card" data-tilt>
-                    <span class="protocol-id">PROTOCOL_02</span>
-                    <h2>Quantum Pay</h2>
-                    <p>Absolute Financial Sovereignty. Your assets are anchored in the Quantum Ledger of the Qynct Mesh.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- মেগা কর্পোরেট ইনফরমেশন হাব -->
-        <section class="corporate-vision">
-            <div class="vision-wrap">
-                <h2 class="section-title">A Gift to Humanity</h2>
-                <p class="mission-statement">
-                    "My mission is to shrink the complexity of human civilization into a single, pocket-sized reality—independent of traditional infrastructure and accessible to every human being for free."
-                </p>
-                <div class="executive-sign">
-                    <span class="name">TOSLIM ASAD MAHI</span>
-                    <span class="role">Founder & Chief Visionary Officer</span>
-                </div>
-            </div>
-        </section>
-    </main>
+    <div class="mega-grid">
+        <div class="glass-node">
+            <small style="color: var(--accent); font-weight: 800;">PROTOCOL 01</small>
+            <h2>Zyvact OS</h2>
+            <p>The First Neural Social Fabric. Connect without WiFi, data, or boundaries. Pure human connection.</p>
+        </div>
+        <div class="glass-node">
+            <small style="color: var(--accent); font-weight: 800;">PROTOCOL 02</small>
+            <h2>Quantum Pay</h2>
+            <p>Financial freedom without borders. Global transactions at zero cost, powered by Qynct Core.</p>
+        </div>
+    </div>
 
     <footer>
-        <div class="footer-hub">
-            <div class="hub-group">
-                <h4>Core Technology</h4>
-                <a href="#">Neural OS</a>
-                <a href="#">Satellite Mesh</a>
-                <a href="#">Quantum Layer</a>
-                <a href="#">Offline Engine</a>
-            </div>
-            <div class="hub-group">
-                <h4>Legal Affairs</h4>
-                <a href="#">Privacy Protocol</a>
-                <a href="#">User Rights</a>
-                <a href="#">Governance</a>
-                <a href="#">Ethics Code</a>
-            </div>
-            <div class="hub-group">
-                <h4>Company</h4>
-                <a href="#">About Qynct</a>
-                <a href="#">Investor Relations</a>
-                <a href="#">Global Reach</a>
-                <a href="#">Careers</a>
-            </div>
+        <div class="signature-wrap">
+            <h2 class="name">TOSLIM ASAD MAHI</h2>
+            <p class="role">Founder & Chief Visionary Officer</p>
+            <p style="color: #86868b; max-width: 700px; margin-top: 40px; font-size: 18px; line-height: 1.8; font-style: italic;">
+                "My mission is to shrink the complexity of human civilization into a single, pocket-sized reality."
+            </p>
         </div>
-        <div class="final-legal">
-            © 2026 Qynct One Global Ecosystem. Patented Globally. Directed by Mahi. <br>
-            All Services Operating Under Sovereign User Protocol.
-        </div>
+        <p style="font-size: 11px; color: #ccc; margin-top: 100px; text-align: center;">© 2026 Qynct One Global. Patented Technology. Directed by Mahi.</p>
     </footer>
 
-    <script src="app.js"></script>
+    <script>
+        // মেগা ৩ডি ইঞ্জিন - যা সাধারণ কোডের বাইরে
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('render-stage'), antialias: true, alpha: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+
+        // ১০,০০০ ডাইনামিক হোয়াইট নক্ষত্র
+        const starGeo = new THREE.BufferGeometry();
+        const starPos = new Float32Array(10000 * 3);
+        for(let i=0; i<30000; i++) starPos[i] = (Math.random() - 0.5) * 50;
+        starGeo.setAttribute('position', new THREE.BufferAttribute(starPos, 3));
+        const stars = new THREE.Points(starGeo, new THREE.PointsMaterial({ size: 0.015, color: 0x0071e3 }));
+        scene.add(stars);
+
+        // ৩ডি লিকুইড এনার্জি গ্লোব
+        const geometry = new THREE.SphereGeometry(4.5, 128, 128);
+        const material = new THREE.MeshPhongMaterial({
+            color: 0x0071e3,
+            wireframe: true,
+            transparent: true,
+            opacity: 0.1
+        });
+        const globe = new THREE.Mesh(geometry, material);
+        scene.add(globe);
+
+        const light = new THREE.PointLight(0xffffff, 2);
+        light.position.set(10, 10, 10);
+        scene.add(light);
+        scene.add(new THREE.AmbientLight(0xffffff, 0.4));
+        camera.position.z = 12;
+
+        function animate() {
+            requestAnimationFrame(animate);
+            globe.rotation.y += 0.001;
+            stars.rotation.y += 0.0002;
+            renderer.render(scene, camera);
+        }
+        animate();
+
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+    </script>
 </body>
 </html>
