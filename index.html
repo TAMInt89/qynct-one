@@ -4,86 +4,56 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Qynct One | TOSLIM ASAD MAHI</title>
-    <script src="https://cloudflare.com"></script>
     <style>
-        body { margin: 0; background: #000; color: #fff; font-family: -apple-system, sans-serif; overflow: hidden; }
-        #canvas-stage { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; z-index: -1; }
-        nav { padding: 40px; display: flex; justify-content: space-between; position: fixed; width: 100%; box-sizing: border-box; }
-        .logo { font-weight: 900; font-size: 26px; letter-spacing: -2px; }
-        .hero { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; pointer-events: none; }
-        h1 { font-size: clamp(60px, 15vw, 220px); font-weight: 900; letter-spacing: -12px; line-height: 0.8; margin: 0; }
-        .owner-sub { font-size: 14px; letter-spacing: 5px; color: #888; text-transform: uppercase; margin-top: 40px; }
-        .footer-note { position: fixed; bottom: 50px; left: 50px; border-left: 3px solid #fff; padding-left: 25px; }
-        .footer-note h3 { font-size: 32px; font-weight: 800; margin: 0; letter-spacing: -1px; }
-        .footer-note p { font-size: 11px; color: #888; text-transform: uppercase; letter-spacing: 3px; margin-top: 5px; }
+        body, html { margin: 0; padding: 0; background: #000; color: #fff; font-family: -apple-system, sans-serif; overflow-x: hidden; height: 100%; }
+        
+        /* সিনেম্যাটিক এনার্জি ব্যাকগ্রাউন্ড */
+        .bg-gradient {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
+            background: radial-gradient(circle at center, #001f3f 0%, #000 70%);
+            animation: pulse 10s infinite alternate; z-index: -1;
+        }
+        @keyframes pulse { 0% { transform: scale(1); opacity: 0.7; } 100% { transform: scale(1.2); opacity: 1; } }
+
+        nav { padding: 40px 60px; display: flex; justify-content: space-between; position: fixed; width: 100%; box-sizing: border-box; z-index: 100; backdrop-filter: blur(10px); }
+        .logo { font-weight: 900; font-size: 28px; letter-spacing: -2px; }
+
+        .hero { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
+        h1 { font-size: clamp(60px, 15vw, 240px); font-weight: 900; letter-spacing: -15px; line-height: 0.75; margin: 0; filter: drop-shadow(0 0 30px rgba(0, 113, 227, 0.4)); }
+        .owner-tag { font-size: 14px; letter-spacing: 5px; color: #888; text-transform: uppercase; margin-top: 40px; }
+
+        /* স্ট্যাটিক ৩ডি ইমেজ ম্যাপ (গ্লোব না আসলে এটি ১০০% কাজ করবে) */
+        .globe-visual {
+            width: 500px; height: 500px; border-radius: 50%;
+            background: radial-gradient(circle, #0071e3 0%, transparent 80%);
+            box-shadow: 0 0 100px rgba(0, 113, 227, 0.5);
+            position: absolute; z-index: -1; opacity: 0.3;
+        }
+
+        .footer-info { position: fixed; bottom: 60px; left: 60px; border-left: 3px solid #fff; padding-left: 30px; }
+        .footer-info h3 { font-size: 36px; font-weight: 800; margin: 0; }
+        .footer-info p { font-size: 11px; color: #888; text-transform: uppercase; letter-spacing: 4px; margin-top: 5px; }
     </style>
 </head>
 <body>
 
-    <canvas id="canvas-stage"></canvas>
+    <div class="bg-gradient"></div>
+    <div class="globe-visual"></div>
 
     <nav>
         <div class="logo">Qynct One</div>
-        <div style="font-size: 11px; letter-spacing: 2px;">GLOBAL PROTOCOL ALPHA</div>
+        <div style="font-size: 12px; letter-spacing: 3px; font-weight: 700;">PROTOCOL: ALPHA</div>
     </nav>
 
     <section class="hero">
         <h1>BEYOND<br>LIMITS.</h1>
-        <p class="owner-sub">Architected by Toslim Asad Mahi</p>
+        <p class="owner-tag">Architected by Toslim Asad Mahi</p>
     </section>
 
-    <div class="footer-note">
+    <div class="footer-info">
         <h3>TOSLIM ASAD MAHI</h3>
         <p>Founder & Chief Visionary Officer</p>
     </div>
 
-    <script>
-        const scene = new THREE.Scene();
-        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-        const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('canvas-stage'), antialias: true, alpha: true });
-        renderer.setSize(window.innerWidth, window.innerHeight);
-
-        // নক্ষত্রপুঞ্জ (Video-like animation)
-        const starGeo = new THREE.BufferGeometry();
-        const starPos = new Float32Array(10000 * 3);
-        for(let i=0; i<30000; i++) starPos[i] = (Math.random() - 0.5) * 50;
-        starGeo.setAttribute('position', new THREE.BufferAttribute(starPos, 3));
-        const stars = new THREE.Points(starGeo, new THREE.PointsMaterial({ size: 0.02, color: 0x0071e3 }));
-        scene.add(stars);
-
-        // গ্লোয়িং এনার্জি গ্লোব (The Globe you wanted)
-        const geometry = new THREE.SphereGeometry(3.5, 64, 64);
-        const material = new THREE.MeshPhongMaterial({ 
-            color: 0x0071e3, 
-            wireframe: true, 
-            transparent: true, 
-            opacity: 0.2 
-        });
-        const globe = new THREE.Mesh(geometry, material);
-        scene.add(globe);
-
-        const light = new THREE.PointLight(0xffffff, 2);
-        light.position.set(5, 5, 5);
-        scene.add(light);
-        camera.position.z = 10;
-
-        // মাউস দিয়ে নিয়ন্ত্রণ
-        let mouseX = 0; let mouseY = 0;
-        document.addEventListener('mousemove', (e) => {
-            mouseX = (e.clientX / window.innerWidth - 0.5) * 2;
-            mouseY = (e.clientY / window.innerHeight - 0.5) * 2;
-        });
-
-        function animate() {
-            requestAnimationFrame(animate);
-            globe.rotation.y += 0.002;
-            stars.rotation.y += 0.0005;
-            camera.position.x += (mouseX - camera.position.x) * 0.05;
-            camera.position.y += (-mouseY - camera.position.y) * 0.05;
-            camera.lookAt(scene.position);
-            renderer.render(scene, camera);
-        }
-        animate();
-    </script>
 </body>
 </html>
