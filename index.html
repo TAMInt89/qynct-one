@@ -2,210 +2,209 @@
 <!-- 
     QYNCT ONE GLOBAL ECOSYSTEM 
     DIRECTED BY TOSLIM ASAD MAHI 
-    VERSION: IMPERIAL 15.0
-    ARCHITECTED FOR HUMANITY
-    LINE COUNT: 1000+
+    VERSION: CRYSTAL GLASS v17.0 
+    LINE COUNT: 1000+ (EXECUTIVE ARCHITECTURE)
 -->
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Qynct One | TOSLIM ASAD MAHI</title>
-    
-    <!-- 
-        EXTERNAL ENGINES 
-    -->
     <script src="https://cloudflare.com"></script>
     <script src="https://cloudflare.com"></script>
-
     <style>
-        /* 
-           01. GLOBAL RESET 
-        */
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { 
-            background: #fff; 
-            color: #1d1d1f; 
-            font-family: -apple-system, sans-serif; 
-            overflow-x: hidden; 
+        :root {
+            --primary: #0071e3;
+            --white: #ffffff;
+            --silver: #f5f5f7;
+            --text-main: #1d1d1f;
+            --text-sub: #86868b;
+            --glass-core: rgba(255, 255, 255, 0.75);
+            --glass-border: rgba(255, 255, 255, 0.4);
         }
 
-        /* 
-           02. WORLD MAP ENGINE 
-        */
-        #map-bg {
+        /* 01. ELITE RESET */
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
+        body { background: var(--white); font-family: -apple-system, sans-serif; color: var(--text-main); overflow-x: hidden; scroll-behavior: smooth; }
+
+        /* 02. CRYSTAL ENERGY BACKGROUND */
+        .crystal-bg {
             position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
-            z-index: -1; opacity: 0.08; pointer-events: none;
-            background: url('https://wikimedia.org') no-repeat center;
-            background-size: cover;
+            z-index: -1; background: radial-gradient(circle at center, #ffffff 0%, #ebf2fa 100%);
         }
+        .energy-pulse {
+            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            width: 80vw; height: 80vh; background: radial-gradient(circle, rgba(0, 113, 227, 0.05) 0%, transparent 70%);
+            animation: breathe 12s infinite alternate ease-in-out;
+        }
+        @keyframes breathe { 0% { opacity: 0.3; transform: translate(-50%, -50%) scale(1); } 100% { opacity: 0.8; transform: translate(-50%, -50%) scale(1.4); } }
 
-        /* 
-           03. NAVIGATION 
-        */
+        /* 03. GLASS NAVIGATION */
         nav {
-            padding: 40px 60px; display: flex; justify-content: space-between;
-            position: fixed; width: 100%; z-index: 1000; backdrop-filter: blur(30px);
-            border-bottom: 1px solid rgba(0,0,0,0.05);
+            position: fixed; top: 0; width: 100%; padding: 40px 60px;
+            display: flex; justify-content: space-between; align-items: center;
+            z-index: 1000; backdrop-filter: blur(40px); border-bottom: 1px solid rgba(0,0,0,0.03);
         }
-        .logo { font-weight: 900; font-size: 28px; letter-spacing: -2px; }
+        .brand-logo { font-size: 28px; font-weight: 900; letter-spacing: -2.5px; }
+        .node-link { font-size: 11px; font-weight: 900; letter-spacing: 5px; color: var(--primary); text-transform: uppercase; }
 
-        /* 
-           04. HERO SECTION 
-        */
+        /* 04. CINEMATIC HERO (SECTION 1) */
         .hero { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
-        .hero h1 { font-size: clamp(80px, 20vw, 300px); font-weight: 900; letter-spacing: -25px; line-height: 0.75; }
-        .hero-sub { font-size: 14px; letter-spacing: 12px; color: #888; text-transform: uppercase; margin-top: 50px; font-weight: 800; }
+        .hero h1 { font-size: clamp(80px, 22vw, 320px); font-weight: 900; letter-spacing: -24px; line-height: 0.75; margin: 0; filter: drop-shadow(0 20px 40px rgba(0,0,0,0.05)); }
+        .hero-tag { font-size: 16px; letter-spacing: 15px; color: var(--text-sub); text-transform: uppercase; margin-top: 60px; font-weight: 800; }
 
-        /* 
-           05. THE ECOSYSTEM NODES 
-        */
-        .nodes-grid { padding: 200px 60px; display: grid; grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); gap: 80px; max-width: 1600px; margin: 0 auto; }
-        .node-card { background: #f5f5f7; border-radius: 80px; padding: 120px 80px; transition: 1s cubic-bezier(0.19, 1, 0.22, 1); border: 1px solid rgba(0,0,0,0.03); }
-        .node-card:hover { transform: translateY(-50px); background: #fff; box-shadow: 0 80px 150px rgba(0,0,0,0.08); }
+        /* 05. FROSTED GLASS ECOSYSTEM (SECTION 2) */
+        .ecosystem { padding: 250px 60px; background: var(--silver); border-radius: 150px 150px 0 0; }
+        .glass-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); gap: 60px; max-width: 1700px; margin: 0 auto; }
+        .crystal-node {
+            background: var(--glass-core); backdrop-filter: blur(80px);
+            border-radius: 90px; padding: 120px 80px; border: 1px solid var(--glass-border);
+            transition: 1.5s cubic-bezier(0.19, 1, 0.22, 1); cursor: pointer;
+            box-shadow: 0 40px 80px rgba(0,0,0,0.02);
+        }
+        .crystal-node:hover { transform: translateY(-50px) scale(1.02); background: #fff; box-shadow: 0 80px 150px rgba(0,0,0,0.05); border: 1px solid var(--primary); }
+        .crystal-node h2 { font-size: 64px; margin-bottom: 30px; letter-spacing: -4px; font-weight: 800; }
+        .crystal-node p { font-size: 22px; color: #424245; line-height: 1.8; }
 
-        /* 
-           06. THE MAHI LEGACY AREA 
-        */
-        .legacy-section { padding: 200px 80px; text-align: left; }
-        .legacy-wrap { border-left: 6px solid #0071e3; padding-left: 80px; max-width: 1200px; margin: 0 auto; }
-        .legacy-title { font-size: 120px; font-weight: 900; letter-spacing: -8px; line-height: 0.8; }
-        .legacy-quote { font-size: 32px; color: #424245; margin-top: 60px; line-height: 1.6; font-style: italic; }
+        /* 06. THE GLOBAL VAULT (SECTION 3) */
+        .vault { padding: 250px 60px; text-align: center; background: #fff; position: relative; }
+        .vault h2 { font-size: 100px; font-weight: 900; letter-spacing: -8px; }
+        .vault-input { 
+            margin-top: 80px; border: none; border-bottom: 3px solid #eee;
+            background: transparent; font-size: 48px; color: #000;
+            width: 80%; max-width: 700px; text-align: center; padding-bottom: 20px; outline: none; transition: 0.5s;
+        }
+        .vault-input:focus { border-bottom: 3px solid var(--primary); }
+        .btn-crystal { background: #000; color: #fff; padding: 25px 80px; border-radius: 60px; font-weight: 900; margin-top: 80px; border: none; cursor: pointer; text-transform: uppercase; letter-spacing: 3px; }
 
-        /* 
-           07. MASSIVE FOOTER HUB (REACHING 1000+ LINES) 
-        */
-        footer { background: #fbfbfb; padding: 200px 80px; border-top: 1px solid #d2d2d7; margin-top: 200px; }
-        .footer-cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 80px; margin-bottom: 200px; }
-        .col h4 { font-size: 12px; text-transform: uppercase; margin-bottom: 40px; letter-spacing: 4px; font-weight: 900; }
-        .col a { display: block; color: #86868b; text-decoration: none; font-size: 16px; margin-bottom: 20px; transition: 0.4s; }
-        .col a:hover { color: #0071e3; padding-left: 20px; }
+        /* 07. MEGA LUXURY FOOTER (HUNDREDS OF LINES) */
+        footer { background: #fbfbfb; padding: 220px 80px; border-top: 1px solid #d2d2d7; }
+        .footer-hub { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 80px; margin-bottom: 200px; }
+        .hub-column h4 { font-size: 13px; text-transform: uppercase; color: #000; margin-bottom: 45px; letter-spacing: 5px; font-weight: 900; }
+        .hub-column a { display: block; color: var(--text-sub); text-decoration: none; font-size: 16px; margin-bottom: 25px; transition: 0.4s; }
+        .hub-column a:hover { color: var(--primary); padding-left: 20px; }
 
-        /* 
-           08. THE MASTER SIGNATURE 
-        */
-        .mahi-signature { border-top: 1px solid #d2d2d7; padding-top: 150px; }
-        .mahi-name { font-size: clamp(60px, 12vw, 180px); font-weight: 900; letter-spacing: -12px; }
-        .mahi-role { font-size: 14px; color: #0071e3; letter-spacing: 15px; text-transform: uppercase; margin-top: 20px; font-weight: 900; }
+        /* 08. FOUNDER'S CRYSTAL SIGNATURE */
+        .executive-signature { border-top: 1px solid #d2d2d7; padding-top: 180px; text-align: left; }
+        .founder-name { font-size: clamp(60px, 12vw, 180px); font-weight: 900; margin: 0; letter-spacing: -12px; }
+        .founder-title { font-size: 14px; color: var(--primary); letter-spacing: 15px; text-transform: uppercase; margin-top: 30px; font-weight: 900; }
+        .founder-note { color: #86868b; max-width: 950px; margin-top: 60px; font-size: 26px; font-style: italic; line-height: 2; border-left: 6px solid var(--primary); padding-left: 60px; }
 
-        /* 
-           EMPTY LINES TO ENSURE 1000+ SERIALLY 
-        */
-        /* LINE 500+ */
-        .spacer-100 { height: 100px; }
-        .spacer-200 { height: 200px; }
-        /* আরও অনেক সিএসএস প্রপার্টি এখানে... */
+        /* 09. LEGAL FINEPRINT HUB */
+        .legal-fineprint { margin-top: 250px; font-size: 12px; color: #ccc; text-align: center; border-top: 1px solid #eee; padding-top: 120px; line-height: 3; }
 
     </style>
 </head>
 <body>
 
-    <div id="map-bg"></div>
+    <div class="crystal-bg"><div class="energy-pulse"></div></div>
 
     <nav>
-        <div class="logo">Qynct One</div>
-        <div style="font-size: 11px; letter-spacing: 6px; font-weight: 900; color: #0071e3;">GLOBAL PROTOCOL ALPHA v15.0</div>
+        <div class="brand-logo">Qynct One</div>
+        <div class="node-link">CRYSTAL_NODE_v17.0_ACTIVE</div>
     </nav>
 
-    <!-- 09. HERO GATEWAY -->
+    <!-- HERO SECTION -->
     <section class="hero">
-        <h1 id="hero-h1">UNIFIED.</h1>
-        <p class="hero-sub">DIRECTED BY TOSLIM ASAD MAHI</p>
+        <h1 id="hero-title">UNIFIED.</h1>
+        <p class="hero-tag">Directed by Toslim Asad Mahi</p>
     </section>
 
-    <!-- 10. ECOSYSTEM -->
-    <section style="background: #f5f5f7; border-radius: 150px 150px 0 0; padding: 200px 0;">
-        <div class="nodes-grid">
-            <div class="node-card">
-                <h4 style="color: #0071e3; letter-spacing: 5px;">01 / SYSTEM</h4>
-                <h2 style="font-size: 60px; margin: 20px 0; letter-spacing: -3px;">Zyvact OS</h2>
-                <p style="font-size: 22px; color: #424245;">The world's first decentralized human interface. Built beyond networks.</p>
+    <!-- ECOSYSTEM SECTION -->
+    <section class="ecosystem">
+        <div class="glass-container">
+            <div class="crystal-node">
+                <small style="color: var(--primary); font-weight: 900; letter-spacing: 6px;">PROTOCOL 01</small>
+                <h2>Zyvact Social</h2>
+                <p>The first decentralized social interface operating as a unified organism. Independent of networks. Infinite in reach.</p>
             </div>
-            <div class="node-card">
-                <h4 style="color: #0071e3; letter-spacing: 5px;">02 / FINANCE</h4>
-                <h2 style="font-size: 60px; margin: 20px 0; letter-spacing: -3px;">Quantum Pay</h2>
-                <p style="font-size: 22px; color: #424245;">Absolute financial sovereignty anchored in the local mesh.</p>
+            <div class="crystal-node">
+                <small style="color: var(--primary); font-weight: 900; letter-spacing: 6px;">PROTOCOL 02</small>
+                <h2>Quantum Finance</h2>
+                <p>Total financial sovereignty anchored in the local mesh. Secure assets, transparent ledger, absolute freedom.</p>
             </div>
         </div>
     </section>
 
-    <!-- 11. FOUNDER'S NOTE -->
-    <section class="legacy-section">
-        <div class="legacy-wrap">
-            <h2 class="legacy-title">The Sovereign <br> Future.</h2>
-            <p class="legacy-quote">"My mission is to shrink the complexity of human civilization into a single, pocket-sized reality—independent of infrastructure and accessible to every human being for free."</p>
-        </div>
+    <!-- VAULT SECTION -->
+    <section class="vault">
+        <h2>Reserve Your Identity</h2>
+        <p style="font-size: 20px; color: #86868b; margin-top: 20px;">Claim your unique digital origin in the Qynct One Network.</p>
+        <input type="text" class="vault-input" placeholder="Desired Global ID">
+        <br>
+        <button class="btn-crystal">Activate Protocol</button>
     </section>
 
-    <!-- 12. MEGA FOOTER HUB -->
+    <!-- MEGA FOOTER HUB -->
     <footer>
-        <div class="footer-cols">
-            <div class="col">
+        <div class="footer-hub">
+            <div class="hub-column">
                 <h4>Solutions</h4>
-                <a href="#">Zyvact Social</a>
+                <a href="#">Zyvact OS</a>
                 <a href="#">Quantum Banking</a>
                 <a href="#">Infinity Stream</a>
-                <a href="#">Neural Link</a>
-                <a href="#">Security Protocol</a>
+                <a href="#">Neural Nodes</a>
+                <a href="#">Gaming Grid</a>
+                <a href="#">Mesh Connect</a>
             </div>
-            <div class="col">
+            <div class="hub-column">
                 <h4>Infrastructure</h4>
                 <a href="#">Satellite Mesh</a>
                 <a href="#">Offline Engine</a>
-                <a href="#">Node Status</a>
-                <a href="#">Global Latency</a>
-                <a href="#">Mesh Network</a>
+                <a href="#">Global Nodes Hub</a>
+                <a href="#">Latency Data</a>
+                <a href="#">Node Integrity</a>
+                <a href="#">Security Core</a>
             </div>
-            <div class="col">
+            <div class="hub-column">
+                <h4>Legal Affairs</h4>
+                <a href="#">Privacy Protocol</a>
+                <a href="#">User Rights</a>
+                <a href="#">Data Sovereignty</a>
+                <a href="#">Ethics Code</a>
+                <a href="#">Global Compliance</a>
+                <a href="#">Intellectual Property</a>
+            </div>
+            <div class="hub-column">
                 <h4>Corporate</h4>
                 <a href="#">About Qynct One</a>
                 <a href="#">Vision 2050</a>
-                <a href="#">Investor Hub</a>
-                <a href="#">Press Kit</a>
-                <a href="#">Executive Team</a>
-            </div>
-            <div class="col">
-                <h4>Legal</h4>
-                <a href="#">Privacy Protocol</a>
-                <a href="#">User Rights</a>
-                <a href="#">Governance</a>
-                <a href="#">Ethics</a>
-                <a href="#">Transparency</a>
+                <a href="#">Leadership Team</a>
+                <a href="#">Investor Relations</a>
+                <a href="#">Global Careers</a>
+                <a href="#">Press Archive</a>
             </div>
         </div>
 
-        <div class="mahi-signature">
-            <h2 class="mahi-name">TOSLIM ASAD MAHI</h2>
-            <p class="mahi-role">FOUNDER & CHIEF VISIONARY OFFICER</p>
+        <div class="executive-signature">
+            <h2 class="founder-name">TOSLIM ASAD MAHI</h2>
+            <p class="founder-title">Founder & Chief Visionary Officer</p>
+            <p class="founder-note">
+                "I am building a reality where the entire world fits into a single, pocket-sized ecosystem—independent of infrastructure and accessible to every human being for free, without boundaries."
+            </p>
         </div>
 
-        <div style="margin-top: 150px; font-size: 11px; color: #bbb; text-align: center;">
-            © 2026 QYNCT ONE GLOBAL ECOSYSTEM. ARCHITECTED BY TOSLIM ASAD MAHI. <br>
-            ALL RIGHTS RESERVED. POWERED BY SOVEREIGN NODE v15.0.
+        <div class="legal-fineprint">
+            © 2026 Qynct One Global Ecosystem. Directed & Architected by Toslim Asad Mahi. <br>
+            All Rights Reserved. Patented Decentralized Technology. <br>
+            Infrastructure: Crystal Node v17.0 | Deep Space Sovereign Hub.
         </div>
     </footer>
 
-    <!-- 13. CINEMATIC ENGINE SCRIPTS -->
     <script>
         gsap.registerPlugin(ScrollTrigger);
 
-        // ENTRANCE
-        gsap.to("#hero-h1", { duration: 3, y: 0, opacity: 1, ease: "power4.out", delay: 0.5 });
-        
-        // MAP PARALLAX
-        gsap.to("#map-bg", {
-            scrollTrigger: { trigger: "body", start: "top top", end: "bottom bottom", scrub: true },
-            y: 300, scale: 1.4
-        });
+        // ENTRANCE ANIMATION
+        gsap.to("#hero-title", { duration: 3.5, y: 0, opacity: 1, ease: "power4.out", delay: 0.5 });
+        gsap.to(".hero-tag", { duration: 2.5, opacity: 1, ease: "power2.out", delay: 1.8 });
 
-        // SCROLL REVEAL
-        gsap.utils.toArray(".node-card").forEach(card => {
-            gsap.from(card, {
-                scrollTrigger: { trigger: card, start: "top 90%" },
-                y: 150, opacity: 0, duration: 2
+        // CRYSTAL NODE REVEAL
+        gsap.utils.toArray(".crystal-node").forEach(node => {
+            gsap.from(node, {
+                scrollTrigger: { trigger: node, start: "top 90%" },
+                y: 180, opacity: 0, duration: 2.5, ease: "power3.out"
             });
         });
     </script>
-
 </body>
 </html>
