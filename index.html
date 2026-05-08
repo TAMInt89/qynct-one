@@ -3,142 +3,112 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Qynct One | The Sovereign Masterpiece</title>
-    <!-- Professional Core Engines -->
-    <script src="https://cloudflare.com"></script>
+    <title>Qynct One | The Sovereign Intelligence</title>
     <script src="https://cloudflare.com"></script>
     <style>
-        :root { --accent: #0071e3; --white: #ffffff; --text: #1d1d1f; }
-        body { margin: 0; background: #fff; font-family: -apple-system, sans-serif; color: var(--text); overflow-x: hidden; }
+        :root { --accent: #0071e3; }
+        body { margin: 0; background: #fff; font-family: -apple-system, sans-serif; overflow-x: hidden; color: #000; }
         
-        /* মেগা ৩ডি ইন্টারফেস - যা তুমি চেয়েছো */
-        #neural-stage { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; z-index: -1; background: #fff; }
+        /* মেগা ৩ডি ইঞ্জিন ক্যানভাস */
+        #canvas-stage { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; z-index: -1; background: radial-gradient(circle at center, #ffffff 0%, #f0f0f0 100%); }
 
-        nav { padding: 40px 60px; display: flex; justify-content: space-between; position: fixed; width: 100%; z-index: 1000; box-sizing: border-box; backdrop-filter: blur(30px); border-bottom: 1px solid rgba(0,0,0,0.03); }
+        nav { padding: 40px 60px; display: flex; justify-content: space-between; position: fixed; width: 100%; z-index: 100; box-sizing: border-box; backdrop-filter: blur(20px); }
         .logo { font-weight: 900; font-size: 26px; letter-spacing: -2px; }
 
         .hero { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; pointer-events: none; }
-        .hero h1 { font-size: clamp(80px, 20vw, 250px); font-weight: 900; letter-spacing: -18px; line-height: 0.8; margin: 0; filter: drop-shadow(0 20px 50px rgba(0,0,0,0.05)); }
-        .hero p { font-size: 16px; letter-spacing: 12px; color: #86868b; text-transform: uppercase; margin-top: 50px; font-weight: 700; }
-
-        /* ডাইনামিক ইকোসিস্টেম হাব */
-        .mega-grid { padding: 150px 60px; max-width: 1600px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); gap: 60px; }
-        .glass-vault { background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(60px); border-radius: 80px; padding: 120px 80px; border: 1px solid rgba(0,0,0,0.04); transition: 1s cubic-bezier(0.19, 1, 0.22, 1); }
-        .glass-vault:hover { transform: translateY(-40px) scale(1.03); box-shadow: 0 80px 150px rgba(0,0,0,0.08); border: 1px solid var(--accent); }
-        .glass-vault h2 { font-size: 56px; margin-bottom: 25px; letter-spacing: -3px; }
+        .hero h1 { font-size: clamp(80px, 20vw, 300px); font-weight: 900; letter-spacing: -20px; line-height: 0.7; margin: 0; filter: drop-shadow(0 30px 60px rgba(0,0,0,0.1)); }
+        .hero p { font-size: 16px; letter-spacing: 12px; color: #86868b; text-transform: uppercase; margin-top: 60px; font-weight: 700; }
 
         /* রাজকীয় মাস্টার ফুটার */
-        footer { background: #fbfbfb; padding: 150px 80px; border-top: 1px solid #d2d2d7; margin-top: 200px; }
-        .footer-hub { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 60px; margin-bottom: 120px; }
-        .hub-col h4 { font-size: 12px; text-transform: uppercase; color: #000; margin-bottom: 30px; letter-spacing: 2px; font-weight: 800; }
-        .hub-col a { display: block; color: #86868b; text-decoration: none; font-size: 14px; margin-bottom: 18px; transition: 0.4s; }
-        .hub-col a:hover { color: var(--accent); padding-left: 10px; }
+        footer { background: #fbfbfb; padding: 150px 80px; border-top: 1px solid #d2d2d7; margin-top: 300px; }
+        .footer-hub { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 60px; margin-bottom: 150px; }
+        .hub-col h4 { font-size: 12px; text-transform: uppercase; color: #000; margin-bottom: 40px; letter-spacing: 3px; font-weight: 800; }
+        .hub-col a { display: block; color: #86868b; text-decoration: none; font-size: 15px; margin-bottom: 22px; transition: 0.5s; }
+        .hub-col a:hover { color: var(--accent); padding-left: 15px; }
 
         .executive-signature { border-top: 1px solid #d2d2d7; padding-top: 100px; text-align: left; }
-        .name { font-size: clamp(40px, 8vw, 100px); font-weight: 800; margin: 0; letter-spacing: -4px; color: #000; }
-        .role { font-size: 12px; color: var(--accent); letter-spacing: 6px; text-transform: uppercase; margin-top: 10px; }
-        .vision-text { color: #86868b; max-width: 800px; margin-top: 40px; font-size: 22px; font-style: italic; line-height: 1.8; }
-        .legal { margin-top: 150px; font-size: 11px; color: #ccc; text-align: center; border-top: 1px solid #eee; padding-top: 50px; line-height: 2.5; }
+        .name { font-size: clamp(50px, 10vw, 150px); font-weight: 900; margin: 0; letter-spacing: -8px; }
+        .role { font-size: 14px; color: var(--accent); letter-spacing: 10px; text-transform: uppercase; margin-top: 15px; font-weight: 800; }
     </style>
 </head>
 <body>
 
-    <canvas id="neural-stage"></canvas>
+    <canvas id="canvas-stage"></canvas>
 
     <nav>
         <div class="logo">Qynct One</div>
-        <div style="font-size: 11px; letter-spacing: 3px; font-weight: 800; color: var(--accent);">GLOBAL SOVEREIGN PROTOCOL v8.0</div>
+        <div style="font-size: 11px; letter-spacing: 5px; font-weight: 900; color: var(--accent);">GLOBAL SOVEREIGN PROTOCOL v9.0</div>
     </nav>
 
     <section class="hero">
-        <h1 id="main-title">UNIFIED.</h1>
+        <h1>UNIFIED.</h1>
         <p>Architected by Toslim Asad Mahi</p>
     </section>
-
-    <div class="mega-grid">
-        <div class="glass-vault">
-            <small style="color: var(--accent); font-weight: 900;">PROTOCOL 01</small>
-            <h2>Zyvact OS</h2>
-            <p style="color: #424245; font-size: 20px;">The world's first decentralized human interface. Built beyond the constraints of traditional networks.</p>
-        </div>
-        <div class="glass-node" style="display:none;"></div> <!-- Hidden Anchor -->
-        <div class="glass-vault">
-            <small style="color: var(--accent); font-weight: 900;">PROTOCOL 02</small>
-            <h2>Quantum Pay</h2>
-            <p style="color: #424245; font-size: 20px;">Financial sovereignty anchored in the local mesh. Unhackable. Absolute. Infinite.</p>
-        </div>
-    </div>
 
     <footer>
         <div class="footer-hub">
             <div class="hub-col">
-                <h4>Solutions</h4>
+                <h4>Ecosystem</h4>
                 <a href="#">Zyvact Social</a>
                 <a href="#">Quantum Pay</a>
-                <a href="#">Gaming Node</a>
                 <a href="#">Media Core</a>
-            </div>
-            <div class="hub-col">
-                <h4>Network</h4>
-                <a href="#">Satellite Mesh</a>
-                <a href="#">Offline Engine</a>
-                <a href="#">Node Status</a>
-                <a href="#">Latencies</a>
-            </div>
-            <div class="hub-col">
-                <h4>Corporate</h4>
-                <a href="#">About Qynct</a>
-                <a href="#">Vision 2050</a>
-                <a href="#">Leadership</a>
-                <a href="#">Investors</a>
+                <a href="#">Gaming Node</a>
             </div>
             <div class="hub-col">
                 <h4>Legal</h4>
                 <a href="#">Privacy Protocol</a>
                 <a href="#">User Rights</a>
                 <a href="#">Sovereignty</a>
-                <a href="#">Ethics</a>
+                <a href="#">Compliance</a>
+            </div>
+            <div class="hub-col">
+                <h4>Corporate</h4>
+                <a href="#">About Qynct</a>
+                <a href="#">Vision 2050</a>
+                <a href="#">Investors</a>
+                <a href="#">Careers</a>
             </div>
         </div>
 
         <div class="executive-signature">
             <h2 class="name">TOSLIM ASAD MAHI</h2>
             <p class="role">Founder & Chief Visionary Officer</p>
-            <p class="vision-text">
-                "I am creating a future where technology becomes invisible, and the entire world fits into a single, pocket-sized reality—accessible to every human being for free."
+            <p style="color: #86868b; max-width: 800px; margin-top: 50px; font-size: 20px; font-style: italic; line-height: 2;">
+                "One World. One Identity. Zero Boundaries. My mission is to make the world fit in your pocket."
             </p>
         </div>
-
-        <div class="legal">
-            © 2026 Qynct One Global Ecosystem. Directed by Mahi. <br>
-            All Rights Reserved. Patented Decentralized Technology. Powered by Sovereign Node v8.0.
-        </div>
+        <p style="margin-top: 150px; font-size: 11px; color: #ccc; text-align: center;">© 2026 Qynct One Global. Directed by Mahi. All Rights Reserved.</p>
     </footer>
 
     <script>
-        // মেগা ৩ডি লিকুইড ইঞ্জিন v8.0 - যা তুমি চেয়েছো
+        // মেগা ৩ডি লিকুইড ইঞ্জিন v9.0 - GOAT Status
         const scene = new THREE.Scene();
         const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-        const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('neural-stage'), antialias: true, alpha: true });
+        const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('canvas-stage'), antialias: true, alpha: true });
+        renderer.setPixelRatio(window.devicePixelRatio);
         renderer.setSize(window.innerWidth, window.innerHeight);
 
-        // ১০,০০০ ডাইনামিক হোয়াইট নক্ষত্র (Starfield)
+        // ১০,০০০ ডাইনামিক হোয়াইট নক্ষত্র (Neural Starfield)
         const starGeo = new THREE.BufferGeometry();
-        const starPos = new Float32Array(15000 * 3);
-        for(let i=0; i<45000; i++) starPos[i] = (Math.random() - 0.5) * 60;
+        const starPos = new Float32Array(10000 * 3);
+        for(let i=0; i<30000; i++) starPos[i] = (Math.random() - 0.5) * 60;
         starGeo.setAttribute('position', new THREE.BufferAttribute(starPos, 3));
-        const starMat = new THREE.PointsMaterial({ size: 0.015, color: 0x0071e3 });
-        const stars = new THREE.Points(starGeo, starMat);
+        const stars = new THREE.Points(starGeo, new THREE.PointsMaterial({ size: 0.015, color: 0x0071e3 }));
         scene.add(stars);
 
-        // ৩ডি লিকুইড পৃথিবী (The Core Earth)
+        // ৩ডি লিকুইড এনার্জি গ্লোব (The Master Core Earth)
         const geometry = new THREE.SphereGeometry(4.5, 128, 128);
-        const material = new THREE.MeshPhongMaterial({ color: 0x0071e3, wireframe: true, transparent: true, opacity: 0.08 });
+        const material = new THREE.MeshPhongMaterial({
+            color: 0x0071e3,
+            wireframe: true,
+            transparent: true,
+            opacity: 0.1
+        });
         const globe = new THREE.Mesh(geometry, material);
         scene.add(globe);
 
-        const light = new THREE.PointLight(0xffffff, 2.5);
-        light.position.set(15, 15, 15);
+        const light = new THREE.PointLight(0xffffff, 2);
+        light.position.set(10, 10, 10);
         scene.add(light);
         scene.add(new THREE.AmbientLight(0xffffff, 0.5));
         camera.position.z = 12;
@@ -146,13 +116,16 @@
         function animate() {
             requestAnimationFrame(animate);
             globe.rotation.y += 0.001;
-            stars.rotation.y += 0.0002;
+            stars.rotation.y += 0.0003;
             renderer.render(scene, camera);
         }
         animate();
 
-        // GSAP সিনেম্যাটিক রিভিল
-        gsap.from("#main-title", { duration: 3, y: 100, opacity: 0, ease: "power4.out", delay: 0.5 });
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
     </script>
 </body>
 </html>
