@@ -3,61 +3,94 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Qynct One | TOSLIM ASAD MAHI</title>
+    <title>Qynct One | The Sovereign Intelligence</title>
+    <!-- Professional Core Engines -->
+    <script src="https://cloudflare.com"></script>
     <script src="https://cloudflare.com"></script>
     <style>
-        :root { --accent: #0071e3; --white: #ffffff; }
-        body, html { margin: 0; padding: 0; background: var(--white); font-family: -apple-system, sans-serif; overflow: hidden; height: 100vh; display: flex; justify-content: center; align-items: center; }
+        :root { --accent: #0071e3; --white: #ffffff; --text: #1d1d1f; }
+        body { margin: 0; background: #fff; font-family: -apple-system, sans-serif; color: var(--text); overflow: hidden; }
+        
+        /* মেগা ৩ডি ইন্টারফেস - যা আপনি চেয়েছেন */
+        #neural-stage { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; z-index: -1; background: #fff; }
 
-        /* iCloud-এর চেয়ে অ্যাডভান্সড অ্যানিমেটেড কোর */
-        .core-container { position: relative; display: flex; flex-direction: column; align-items: center; }
-        .glowing-core {
-            width: 250px; height: 250px; border-radius: 50%;
-            background: radial-gradient(circle at 30% 30%, #00a2ff, #0071e3);
-            box-shadow: 0 20px 80px rgba(0, 113, 227, 0.3), inset -10px -10px 40px rgba(0,0,0,0.1);
-            animation: coreBreathe 8s infinite alternate ease-in-out;
-            cursor: pointer; transition: 0.5s;
-        }
-        .glowing-core:hover { transform: scale(1.1); box-shadow: 0 40px 100px rgba(0, 113, 227, 0.5); }
+        nav { padding: 40px 60px; display: flex; justify-content: space-between; position: fixed; width: 100%; z-index: 1000; box-sizing: border-box; backdrop-filter: blur(30px); border-bottom: 1px solid rgba(0,0,0,0.03); }
+        .logo { font-weight: 900; font-size: 26px; letter-spacing: -2px; }
 
-        @keyframes coreBreathe { 0% { transform: scale(1); filter: hue-rotate(0deg); } 100% { transform: scale(1.05); filter: hue-rotate(20deg); } }
+        .hero { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; pointer-events: none; }
+        .hero h1 { font-size: clamp(80px, 20vw, 250px); font-weight: 900; letter-spacing: -18px; line-height: 0.8; margin: 0; filter: drop-shadow(0 20px 50px rgba(0,0,0,0.05)); }
+        .hero p { font-size: 16px; letter-spacing: 12px; color: #86868b; text-transform: uppercase; margin-top: 50px; font-weight: 700; }
 
-        .brand-name { font-size: 80px; font-weight: 800; letter-spacing: -4px; margin-top: 40px; color: #000; opacity: 0; }
-
-        /* অ্যাডভান্সড সাইন-ইন বাটন */
-        .sign-in-btn {
-            margin-top: 60px; padding: 18px 60px; border-radius: 40px; background: #000;
-            color: #fff; text-decoration: none; font-weight: 700; font-size: 18px;
-            transition: 0.4s; border: none; cursor: pointer; opacity: 0;
-        }
-        .sign-in-btn:hover { background: #333; transform: translateY(-5px); box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
-
-        .footer-credit { position: fixed; bottom: 50px; text-align: center; color: #86868b; font-size: 12px; letter-spacing: 2px; text-transform: uppercase; font-weight: 700; }
+        /* রাজকীয় মাস্টার ফুটার */
+        footer { background: #fbfbfb; padding: 150px 80px; border-top: 1px solid #d2d2d7; margin-top: 200px; }
+        .signature-wrap { border-top: 1px solid #d2d2d7; padding-top: 100px; text-align: left; }
+        .name { font-size: clamp(40px, 8vw, 100px); font-weight: 800; margin: 0; letter-spacing: -4px; color: #000; }
+        .role { font-size: 12px; color: var(--accent); letter-spacing: 6px; text-transform: uppercase; margin-top: 10px; }
     </style>
 </head>
 <body>
 
-    <div class="core-container">
-        <div class="glowing-core" id="logo-core"></div>
-        <div class="brand-name" id="brand-text">Qynct One</div>
-        <button class="sign-in-btn" id="login-btn">Sign In to Qynct</button>
-    </div>
+    <canvas id="neural-stage"></canvas>
 
-    <div class="footer-credit">Directed by Toslim Asad Mahi</div>
+    <nav>
+        <div class="logo">Qynct One</div>
+        <div style="font-size: 11px; letter-spacing: 3px; font-weight: 800; color: var(--accent);">GLOBAL SOVEREIGN PROTOCOL v18.0</div>
+    </nav>
+
+    <section class="hero">
+        <h1 id="main-title">UNIFIED.</h1>
+        <p>Architected by Toslim Asad Mahi</p>
+    </section>
+
+    <footer>
+        <div class="signature-wrap">
+            <h2 class="name">TOSLIM ASAD MAHI</h2>
+            <p class="role">Founder & Chief Visionary Officer</p>
+            <p style="color: #86868b; max-width: 700px; margin-top: 40px; font-size: 18px; line-height: 1.8; font-style: italic;">
+                "I am creating a future where technology becomes invisible, and the entire world fits into a single, pocket-sized reality."
+            </p>
+        </div>
+        <p style="font-size: 11px; color: #ccc; margin-top: 100px; text-align: center;">© 2026 Qynct One Global. Directed by Mahi.</p>
+    </footer>
 
     <script>
-        // প্রফেশনাল এন্ট্রান্স অ্যানিমেশন
-        window.onload = () => {
-            gsap.to("#brand-text", { duration: 2, opacity: 1, y: -20, ease: "power4.out", delay: 0.5 });
-            gsap.to("#login-btn", { duration: 2, opacity: 1, y: -20, ease: "power4.out", delay: 1 });
-        };
+        // মেগা ৩ডি লিকুইড ইঞ্জিন v18.0 - যা আপনি চেয়েছেন
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('neural-stage'), antialias: true, alpha: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
 
-        // মাউস ইন্টারঅ্যাকশন
-        document.addEventListener('mousemove', (e) => {
-            const moveX = (e.clientX - window.innerWidth / 2) * 0.02;
-            const moveY = (e.clientY - window.innerHeight / 2) * 0.02;
-            gsap.to("#logo-core", { duration: 1, x: moveX, y: moveY, ease: "power2.out" });
-        });
+        // ১০,০০০ ডাইনামিক হোয়াইট নক্ষত্র (Neural Particles)
+        const starGeo = new THREE.BufferGeometry();
+        const starPos = new Float32Array(15000 * 3);
+        for(let i=0; i<45000; i++) starPos[i] = (Math.random() - 0.5) * 60;
+        starGeo.setAttribute('position', new THREE.BufferAttribute(starPos, 3));
+        const starMat = new THREE.PointsMaterial({ size: 0.015, color: 0x0071e3 });
+        const stars = new THREE.Points(starGeo, starMat);
+        scene.add(stars);
+
+        // ৩ডি লিকুইড পৃথিবী (The Master Core)
+        const geometry = new THREE.SphereGeometry(4.5, 128, 128);
+        const material = new THREE.MeshPhongMaterial({ color: 0x0071e3, wireframe: true, transparent: true, opacity: 0.08 });
+        const globe = new THREE.Mesh(geometry, material);
+        scene.add(globe);
+
+        const light = new THREE.PointLight(0xffffff, 2.5);
+        light.position.set(15, 15, 15);
+        scene.add(light);
+        scene.add(new THREE.AmbientLight(0xffffff, 0.5));
+        camera.position.z = 12;
+
+        function animate() {
+            requestAnimationFrame(animate);
+            globe.rotation.y += 0.001;
+            stars.rotation.y += 0.0002;
+            renderer.render(scene, camera);
+        }
+        animate();
+
+        // GSAP সিনেম্যাটিক রিভিল - iCloud এর থেকে অ্যাডভান্সড
+        gsap.from("#main-title", { duration: 3, y: 100, opacity: 0, ease: "power4.out", delay: 0.5 });
     </script>
 </body>
 </html>
