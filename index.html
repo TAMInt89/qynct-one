@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>QYNCT ONE</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -29,7 +29,7 @@ body{
   padding:25px;
 }
 
-/* BACKGROUND GLOW */
+/* BACKGROUND LIGHT */
 
 body::before{
   content:'';
@@ -43,7 +43,7 @@ body::before{
   pointer-events:none;
 }
 
-/* ===== NEURAL CANVAS ===== */
+/* CANVAS */
 
 #neural-canvas{
   position:fixed;
@@ -55,7 +55,7 @@ body::before{
   background:transparent !important;
 }
 
-/* MAIN CONTENT */
+/* MAIN */
 
 .container{
   width:100%;
@@ -68,11 +68,12 @@ body::before{
 /* GLASS */
 
 .glass{
-  background:rgba(255,255,255,.38);
+  background:rgba(255,255,255,.35);
   backdrop-filter:blur(20px);
   border:1px solid rgba(255,255,255,.75);
+
   box-shadow:
-  0 10px 35px rgba(125,140,180,.18),
+  0 10px 35px rgba(125,140,180,.15),
   inset 0 1px 1px rgba(255,255,255,.55);
 }
 
@@ -161,6 +162,8 @@ nav{
   max-width:700px;
 }
 
+/* STATUS */
+
 .status{
   margin-top:35px;
   display:inline-flex;
@@ -169,8 +172,8 @@ nav{
   padding:16px 28px;
   border-radius:40px;
   background:rgba(255,255,255,.5);
-  backdrop-filter:blur(14px);
   border:1px solid rgba(255,255,255,.9);
+  backdrop-filter:blur(14px);
   font-weight:600;
 }
 
@@ -188,6 +191,8 @@ nav{
   50%{transform:scale(1.5);}
   100%{transform:scale(1);}
 }
+
+/* HERO RIGHT */
 
 .hero-right{
   display:flex;
@@ -267,7 +272,7 @@ nav{
   100%{transform:translateY(0px);}
 }
 
-/* STATS */
+/* PREMIUM STATS */
 
 .stats{
   margin-top:45px;
@@ -277,18 +282,103 @@ nav{
 }
 
 .stat-card{
+  position:relative;
   padding:34px;
-  border-radius:28px;
+  border-radius:30px;
+  overflow:hidden;
+  transition:.45s;
+}
+
+.stat-card:hover{
+  transform:translateY(-10px);
+
+  box-shadow:
+  0 25px 45px rgba(120,140,180,.18),
+  inset 0 1px 1px rgba(255,255,255,.65);
+}
+
+.stat-card::before{
+  content:'';
+  position:absolute;
+  inset:0;
+
+  background:
+  linear-gradient(
+    145deg,
+    rgba(255,255,255,.22),
+    rgba(255,255,255,.05)
+  );
+}
+
+.stat-top{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin-bottom:18px;
+  position:relative;
+  z-index:2;
+}
+
+.stat-top span{
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:1.2px;
+  color:#7b8798;
+}
+
+.live-dot,
+.mesh-dot,
+.privacy-dot,
+.scale-dot{
+  width:10px;
+  height:10px;
+  border-radius:50%;
+}
+
+.live-dot{
+  background:#22c55e;
+  box-shadow:0 0 18px #22c55e;
+}
+
+.mesh-dot{
+  background:#60a5fa;
+  box-shadow:0 0 18px #60a5fa;
+}
+
+.privacy-dot{
+  background:#a855f7;
+  box-shadow:0 0 18px #a855f7;
+}
+
+.scale-dot{
+  background:#f59e0b;
+  box-shadow:0 0 18px #f59e0b;
 }
 
 .stat-card h3{
-  font-size:52px;
-  margin-bottom:10px;
+  position:relative;
+  z-index:2;
+  font-size:62px;
+  line-height:1;
+  margin-bottom:14px;
+  color:#243041;
+  letter-spacing:-3px;
+}
+
+.stat-card h4{
+  position:relative;
+  z-index:2;
+  font-size:22px;
+  margin-bottom:8px;
+  font-weight:600;
 }
 
 .stat-card p{
+  position:relative;
+  z-index:2;
   color:#6b7280;
-  font-weight:600;
+  font-size:15px;
+  line-height:1.6;
 }
 
 /* FOOTER */
@@ -372,7 +462,7 @@ body{
 
 <body>
 
-<!-- ===== BACKGROUND CANVAS ===== -->
+<!-- CANVAS -->
 
 <canvas id="neural-canvas"></canvas>
 
@@ -437,28 +527,68 @@ LIVE NETWORK STATUS
 
 </section>
 
-<!-- STATS -->
+<!-- PREMIUM STATS -->
 
 <div class="stats">
 
 <div class="stat-card glass">
-<h3>8.2B+</h3>
-<p>GLOBAL HUMAN REACH</p>
+
+<div class="stat-top">
+<div class="live-dot"></div>
+<span>LIVE NODE</span>
+</div>
+
+<h3>01</h3>
+
+<h4>Core Node</h4>
+
+<p>Status: Operational</p>
+
 </div>
 
 <div class="stat-card glass">
-<h3>195+</h3>
-<p>NATION-STATE COVERAGE</p>
+
+<div class="stat-top">
+<div class="mesh-dot"></div>
+<span>MESH GRID</span>
+</div>
+
+<h3>0ms</h3>
+
+<h4>Network Latency</h4>
+
+<p>Mesh Framework</p>
+
 </div>
 
 <div class="stat-card glass">
-<h3>99.99%</h3>
-<p>INFRASTRUCTURE RELIABILITY</p>
+
+<div class="stat-top">
+<div class="privacy-dot"></div>
+<span>PRIVACY CORE</span>
+</div>
+
+<h3>100%</h3>
+
+<h4>Peer Sovereignty</h4>
+
+<p>Data Privacy</p>
+
 </div>
 
 <div class="stat-card glass">
+
+<div class="stat-top">
+<div class="scale-dot"></div>
+<span>INFINITE SCALE</span>
+</div>
+
 <h3>∞</h3>
-<p>SCALABLE INTELLIGENCE</p>
+
+<h4>Scale Capacity</h4>
+
+<p>Beyond Traditional Grid</p>
+
 </div>
 
 </div>
@@ -475,8 +605,8 @@ QYNCT ONE
 </div>
 
 <p style="color:#6b7280;line-height:1.8;">
-Architecting the operating system of connected civilization — elegant,
-sovereign, and timeless.
+Architecting the operating system of connected civilization —
+elegant, sovereign, and timeless.
 </p>
 
 </div>
@@ -523,7 +653,7 @@ All systems operational.
 
 </div>
 
-<!-- ===== ADVANCED 3D HOLOGRAPHIC CANVAS ===== -->
+<!-- ADVANCED HOLOGRAPHIC BACKGROUND -->
 
 <script>
 
@@ -546,7 +676,6 @@ for(let i = 0; i < particleCount; i++){
   particles.push({
     x: Math.random() * canvas.width,
     y: Math.random() * canvas.height,
-    z: Math.random() * 2,
     radius: Math.random() * 2,
     speedX: (Math.random() - 0.5) * 0.25,
     speedY: (Math.random() - 0.5) * 0.25
@@ -579,8 +708,6 @@ function drawGlobe(time){
   const cy = canvas.height * 0.34;
   const radius = 160;
 
-  /* GLOW */
-
   const glow = ctx.createRadialGradient(cx,cy,20,cx,cy,260);
 
   glow.addColorStop(0,"rgba(255,255,255,0.85)");
@@ -591,8 +718,6 @@ function drawGlobe(time){
   ctx.fillStyle = glow;
   ctx.arc(cx,cy,260,0,Math.PI*2);
   ctx.fill();
-
-  /* MAIN SPHERE */
 
   const sphere = ctx.createRadialGradient(
     cx - 50,
@@ -611,8 +736,6 @@ function drawGlobe(time){
   ctx.fillStyle = sphere;
   ctx.arc(cx,cy,radius,0,Math.PI*2);
   ctx.fill();
-
-  /* LATITUDE LINES */
 
   ctx.strokeStyle = "rgba(255,255,255,0.18)";
   ctx.lineWidth = 1;
@@ -637,8 +760,6 @@ function drawGlobe(time){
 
   }
 
-  /* LONGITUDE LINES */
-
   for(let i=0;i<12;i++){
 
     ctx.beginPath();
@@ -649,28 +770,6 @@ function drawGlobe(time){
       radius * Math.cos(i * 0.25),
       radius,
       Math.sin(time * 0.0002),
-      0,
-      Math.PI * 2
-    );
-
-    ctx.stroke();
-
-  }
-
-  /* ORBIT RINGS */
-
-  ctx.strokeStyle = "rgba(255,255,255,0.22)";
-
-  for(let i=0;i<3;i++){
-
-    ctx.beginPath();
-
-    ctx.ellipse(
-      cx,
-      cy,
-      radius + 40 + i * 30,
-      70 + i * 20,
-      time * 0.0002 + i,
       0,
       Math.PI * 2
     );
@@ -696,8 +795,6 @@ function drawParticles(){
     if(p.x < 0 || p.x > canvas.width) p.speedX *= -1;
     if(p.y < 0 || p.y > canvas.height) p.speedY *= -1;
 
-    /* CONNECTION LINES */
-
     for(let j=index+1;j<particles.length;j++){
 
       const p2 = particles[j];
@@ -710,8 +807,11 @@ function drawParticles(){
       if(dist < 120){
 
         ctx.beginPath();
-        ctx.strokeStyle = `rgba(180,220,255,${0.12 - dist/1000})`;
+        ctx.strokeStyle =
+        `rgba(180,220,255,${0.12 - dist/1000})`;
+
         ctx.lineWidth = 1;
+
         ctx.moveTo(p.x,p.y);
         ctx.lineTo(p2.x,p2.y);
         ctx.stroke();
