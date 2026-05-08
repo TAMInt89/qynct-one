@@ -43,27 +43,29 @@ body::before{
   pointer-events:none;
 }
 
-/* FLOATING PARTICLES */
+/* ===== NEURAL CANVAS ===== */
 
-canvas{
+#neural-canvas{
   position:fixed;
   inset:0;
   width:100%;
   height:100%;
-  z-index:-1;
-  background:transparent !important;
+  z-index:1;
   pointer-events:none;
+  background:transparent !important;
 }
 
-/* MAIN */
+/* MAIN CONTENT */
 
 .container{
   width:100%;
   max-width:1500px;
   margin:auto;
+  position:relative;
+  z-index:10;
 }
 
-/* GLASS EFFECT */
+/* GLASS */
 
 .glass{
   background:rgba(255,255,255,.38);
@@ -83,8 +85,6 @@ nav{
   padding:18px 24px;
   border-radius:26px;
   margin-bottom:30px;
-  position:relative;
-  z-index:50;
 }
 
 .logo{
@@ -102,7 +102,6 @@ nav{
   background:
   linear-gradient(135deg,#7ca8ff,#dce9ff);
   position:relative;
-  overflow:hidden;
 }
 
 .logo-circle::before{
@@ -129,7 +128,6 @@ nav{
 
 .menu a:hover{
   background:white;
-  box-shadow:0 10px 20px rgba(0,0,0,.08);
 }
 
 /* HERO */
@@ -140,13 +138,6 @@ nav{
   gap:40px;
   align-items:center;
   min-height:78vh;
-  position:relative;
-  z-index:5;
-}
-
-.hero-left{
-  position:relative;
-  z-index:30;
 }
 
 .hero-left h1{
@@ -181,7 +172,6 @@ nav{
   backdrop-filter:blur(14px);
   border:1px solid rgba(255,255,255,.9);
   font-weight:600;
-  box-shadow:0 10px 30px rgba(0,0,0,.06);
 }
 
 .dot{
@@ -194,19 +184,15 @@ nav{
 }
 
 @keyframes pulse{
-  0%{transform:scale(1);opacity:1;}
-  50%{transform:scale(1.6);opacity:.5;}
-  100%{transform:scale(1);opacity:1;}
+  0%{transform:scale(1);}
+  50%{transform:scale(1.5);}
+  100%{transform:scale(1);}
 }
-
-/* HERO RIGHT */
 
 .hero-right{
   display:flex;
   justify-content:center;
   align-items:center;
-  position:relative;
-  z-index:1;
 }
 
 .globe-wrap{
@@ -217,8 +203,6 @@ nav{
   justify-content:center;
   align-items:center;
 }
-
-/* ORBIT RINGS */
 
 .ring{
   position:absolute;
@@ -255,47 +239,16 @@ nav{
   to{transform:rotate(0deg);}
 }
 
-/* GLOBE */
-
 .globe{
   width:340px;
   height:340px;
   border-radius:50%;
-  position:relative;
-  overflow:hidden;
-
   background:
   radial-gradient(circle at 30% 30%,#ffffff,#d9e7ff 45%,#b8ccff 90%);
-
   box-shadow:
   0 0 80px rgba(255,255,255,.95),
   inset 0 0 40px rgba(255,255,255,.95);
-
   animation:float 5s ease-in-out infinite;
-}
-
-.globe::before{
-  content:'';
-  position:absolute;
-  inset:0;
-
-  background:
-  repeating-linear-gradient(
-    to right,
-    rgba(255,255,255,.3),
-    rgba(255,255,255,.3) 2px,
-    transparent 2px,
-    transparent 22px
-  ),
-  repeating-linear-gradient(
-    to bottom,
-    rgba(255,255,255,.2),
-    rgba(255,255,255,.2) 2px,
-    transparent 2px,
-    transparent 22px
-  );
-
-  border-radius:50%;
 }
 
 .platform{
@@ -306,7 +259,6 @@ nav{
   border-radius:50%;
   background:
   radial-gradient(circle,#ffffff,#dfe9ff 50%,transparent 72%);
-  filter:blur(1px);
 }
 
 @keyframes float{
@@ -327,11 +279,6 @@ nav{
 .stat-card{
   padding:34px;
   border-radius:28px;
-  transition:.35s;
-}
-
-.stat-card:hover{
-  transform:translateY(-10px);
 }
 
 .stat-card h3{
@@ -342,176 +289,6 @@ nav{
 .stat-card p{
   color:#6b7280;
   font-weight:600;
-}
-
-/* SECTION */
-
-.section{
-  margin-top:40px;
-  padding:40px;
-  border-radius:40px;
-  overflow:hidden;
-}
-
-.section-grid{
-  display:grid;
-  grid-template-columns:420px 1fr;
-  gap:40px;
-  align-items:center;
-}
-
-.section h2{
-  font-size:64px;
-  line-height:1;
-  margin-bottom:25px;
-}
-
-.section p{
-  color:#6b7280;
-  line-height:1.8;
-  font-size:18px;
-}
-
-/* AI NETWORK */
-
-.ai-network{
-  position:relative;
-  height:500px;
-}
-
-.center-ai{
-  width:180px;
-  height:180px;
-  border-radius:50%;
-  background:
-  radial-gradient(circle,#ffffff,#d2e2ff);
-  position:absolute;
-  left:50%;
-  top:50%;
-  transform:translate(-50%,-50%);
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  font-size:62px;
-  font-weight:700;
-  box-shadow:0 0 50px rgba(255,255,255,.95);
-  animation:float 5s ease-in-out infinite;
-}
-
-.node{
-  position:absolute;
-  width:95px;
-  height:95px;
-  border-radius:50%;
-  overflow:hidden;
-  border:5px solid rgba(255,255,255,.9);
-  box-shadow:0 10px 25px rgba(0,0,0,.12);
-  animation:nodeFloat 4s ease-in-out infinite alternate;
-}
-
-.node img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-}
-
-.n1{top:20px;left:50%;}
-.n2{top:100px;left:100px;}
-.n3{top:120px;right:90px;}
-.n4{bottom:60px;left:180px;}
-.n5{bottom:80px;right:180px;}
-
-@keyframes nodeFloat{
-  from{transform:translateY(-8px);}
-  to{transform:translateY(8px);}
-}
-
-.lines{
-  position:absolute;
-  inset:0;
-  width:100%;
-  height:100%;
-}
-
-/* DARK SECTION */
-
-.dark-section{
-  margin-top:40px;
-  padding:45px;
-  border-radius:40px;
-
-  background:
-  radial-gradient(circle at top,#273b5a,#08111f);
-
-  color:white;
-  position:relative;
-  overflow:hidden;
-}
-
-.dark-section::before{
-  content:'';
-  position:absolute;
-  inset:0;
-  background-image:
-  linear-gradient(rgba(255,255,255,.05) 1px, transparent 1px),
-  linear-gradient(90deg, rgba(255,255,255,.05) 1px, transparent 1px);
-
-  background-size:60px 60px;
-  opacity:.25;
-}
-
-.dark-section h2{
-  font-size:72px;
-  margin-bottom:20px;
-  position:relative;
-  z-index:2;
-}
-
-.dark-section p{
-  position:relative;
-  z-index:2;
-}
-
-.dark-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:24px;
-  margin-top:40px;
-  position:relative;
-  z-index:2;
-}
-
-.dark-card{
-  padding:35px;
-  border-radius:28px;
-  background:rgba(255,255,255,.06);
-  border:1px solid rgba(255,255,255,.12);
-  backdrop-filter:blur(12px);
-  transition:.35s;
-}
-
-.dark-card:hover{
-  transform:translateY(-10px);
-}
-
-.security-icon{
-  width:90px;
-  height:90px;
-  object-fit:contain;
-  filter:drop-shadow(0 0 25px rgba(255,255,255,.35));
-  animation:iconFloat 4s ease-in-out infinite;
-}
-
-@keyframes iconFloat{
-  0%{transform:translateY(0px);}
-  50%{transform:translateY(-8px);}
-  100%{transform:translateY(0px);}
-}
-
-.dark-card h3{
-  margin-top:20px;
-  margin-bottom:15px;
-  font-size:30px;
 }
 
 /* FOOTER */
@@ -556,14 +333,6 @@ footer li{
   grid-template-columns:repeat(2,1fr);
 }
 
-.section-grid{
-  grid-template-columns:1fr;
-}
-
-.dark-grid{
-  grid-template-columns:1fr;
-}
-
 footer{
   grid-template-columns:1fr;
 }
@@ -596,30 +365,6 @@ body{
   font-size:30px;
 }
 
-.globe-wrap{
-  width:100%;
-  height:420px;
-}
-
-.globe{
-  width:230px;
-  height:230px;
-}
-
-.ring.one{
-  width:320px;
-}
-
-.ring.two{
-  width:280px;
-  height:280px;
-}
-
-.ring.three{
-  width:360px;
-  height:360px;
-}
-
 }
 
 </style>
@@ -627,7 +372,9 @@ body{
 
 <body>
 
-<canvas id="particles"></canvas>
+<!-- ===== BACKGROUND CANVAS ===== -->
+
+<canvas id="neural-canvas"></canvas>
 
 <div class="container">
 
@@ -716,121 +463,6 @@ LIVE NETWORK STATUS
 
 </div>
 
-<!-- AI SECTION -->
-
-<section class="section glass">
-
-<div class="section-grid">
-
-<div>
-
-<h2>Zyvact —<br>Social Fabric</h2>
-
-<p>
-A premium connective layer where identity,
-communication, trust, and intelligence operate
-inside one unified ecosystem.
-</p>
-
-</div>
-
-<div class="ai-network">
-
-<svg class="lines" viewBox="0 0 1000 500">
-
-<line x1="500" y1="250" x2="180" y2="120" stroke="#dce8ff"/>
-<line x1="500" y1="250" x2="500" y2="70" stroke="#dce8ff"/>
-<line x1="500" y1="250" x2="820" y2="140" stroke="#dce8ff"/>
-<line x1="500" y1="250" x2="250" y2="400" stroke="#dce8ff"/>
-<line x1="500" y1="250" x2="760" y2="390" stroke="#dce8ff"/>
-
-</svg>
-
-<div class="center-ai">AI</div>
-
-<div class="node n1">
-<img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=400&auto=format&fit=crop">
-</div>
-
-<div class="node n2">
-<img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=400&auto=format&fit=crop">
-</div>
-
-<div class="node n3">
-<img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=400&auto=format&fit=crop">
-</div>
-
-<div class="node n4">
-<img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=400&auto=format&fit=crop">
-</div>
-
-<div class="node n5">
-<img src="https://images.unsplash.com/photo-1504593811423-6dd665756598?q=80&w=400&auto=format&fit=crop">
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-<!-- DARK SECTION -->
-
-<section class="dark-section">
-
-<h2>Quantum Sovereignty</h2>
-
-<p style="font-size:20px;max-width:900px;color:#d4dceb;">
-Security architecture for post-platform civilization —
-resilient, trusted, autonomous, and globally interoperable.
-</p>
-
-<div class="dark-grid">
-
-<div class="dark-card">
-
-<img class="security-icon"
-src="https://cdn-icons-png.flaticon.com/512/2721/2721265.png">
-
-<h3>Sovereign Identity</h3>
-
-<p>
-Persistent trust layers, zero-friction authentication,
-and private digital existence by design.
-</p>
-
-</div>
-
-<div class="dark-card">
-
-<img class="security-icon"
-src="https://cdn-icons-png.flaticon.com/512/2092/2092063.png">
-
-<h3>Unified Defense Grid</h3>
-
-<p>
-Adaptive AI protection architecture built for planetary-scale systems.
-</p>
-
-</div>
-
-<div class="dark-card">
-
-<img class="security-icon"
-src="https://cdn-icons-png.flaticon.com/512/3659/3659898.png">
-
-<h3>Infinite Compute Fabric</h3>
-
-<p>
-Distributed intelligence infrastructure with enterprise-grade resilience.
-</p>
-
-</div>
-
-</div>
-
-</section>
-
 <!-- FOOTER -->
 
 <footer class="glass">
@@ -891,59 +523,220 @@ All systems operational.
 
 </div>
 
-<!-- PARTICLE ANIMATION -->
+<!-- ===== ADVANCED 3D HOLOGRAPHIC CANVAS ===== -->
 
 <script>
 
-const canvas = document.getElementById('particles');
-const ctx = canvas.getContext('2d');
+const canvas = document.getElementById("neural-canvas");
+const ctx = canvas.getContext("2d");
 
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
+function resizeCanvas(){
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
 
-let particles = [];
+resizeCanvas();
+window.addEventListener("resize", resizeCanvas);
 
-for(let i=0;i<120;i++){
+const particles = [];
+const particleCount = 140;
+
+for(let i = 0; i < particleCount; i++){
 
   particles.push({
-    x:Math.random()*canvas.width,
-    y:Math.random()*canvas.height,
-    r:Math.random()*2,
-    dx:(Math.random()-.5)*0.3,
-    dy:(Math.random()-.5)*0.3
+    x: Math.random() * canvas.width,
+    y: Math.random() * canvas.height,
+    z: Math.random() * 2,
+    radius: Math.random() * 2,
+    speedX: (Math.random() - 0.5) * 0.25,
+    speedY: (Math.random() - 0.5) * 0.25
   });
 
 }
 
-function animate(){
+function drawBackgroundGlow(){
+
+  const gradient = ctx.createRadialGradient(
+    canvas.width / 2,
+    canvas.height / 2,
+    100,
+    canvas.width / 2,
+    canvas.height / 2,
+    600
+  );
+
+  gradient.addColorStop(0, "rgba(120,180,255,0.18)");
+  gradient.addColorStop(1, "rgba(255,255,255,0)");
+
+  ctx.fillStyle = gradient;
+  ctx.fillRect(0,0,canvas.width,canvas.height);
+
+}
+
+function drawGlobe(time){
+
+  const cx = canvas.width * 0.72;
+  const cy = canvas.height * 0.34;
+  const radius = 160;
+
+  /* GLOW */
+
+  const glow = ctx.createRadialGradient(cx,cy,20,cx,cy,260);
+
+  glow.addColorStop(0,"rgba(255,255,255,0.85)");
+  glow.addColorStop(0.3,"rgba(160,210,255,0.25)");
+  glow.addColorStop(1,"rgba(255,255,255,0)");
+
+  ctx.beginPath();
+  ctx.fillStyle = glow;
+  ctx.arc(cx,cy,260,0,Math.PI*2);
+  ctx.fill();
+
+  /* MAIN SPHERE */
+
+  const sphere = ctx.createRadialGradient(
+    cx - 50,
+    cy - 60,
+    20,
+    cx,
+    cy,
+    radius
+  );
+
+  sphere.addColorStop(0,"rgba(255,255,255,0.95)");
+  sphere.addColorStop(0.4,"rgba(210,230,255,0.6)");
+  sphere.addColorStop(1,"rgba(150,190,255,0.15)");
+
+  ctx.beginPath();
+  ctx.fillStyle = sphere;
+  ctx.arc(cx,cy,radius,0,Math.PI*2);
+  ctx.fill();
+
+  /* LATITUDE LINES */
+
+  ctx.strokeStyle = "rgba(255,255,255,0.18)";
+  ctx.lineWidth = 1;
+
+  for(let i=-6;i<=6;i++){
+
+    ctx.beginPath();
+
+    const ry = radius * Math.cos(i * 0.22);
+
+    ctx.ellipse(
+      cx,
+      cy + i * 10,
+      radius,
+      ry,
+      0,
+      0,
+      Math.PI * 2
+    );
+
+    ctx.stroke();
+
+  }
+
+  /* LONGITUDE LINES */
+
+  for(let i=0;i<12;i++){
+
+    ctx.beginPath();
+
+    ctx.ellipse(
+      cx,
+      cy,
+      radius * Math.cos(i * 0.25),
+      radius,
+      Math.sin(time * 0.0002),
+      0,
+      Math.PI * 2
+    );
+
+    ctx.stroke();
+
+  }
+
+  /* ORBIT RINGS */
+
+  ctx.strokeStyle = "rgba(255,255,255,0.22)";
+
+  for(let i=0;i<3;i++){
+
+    ctx.beginPath();
+
+    ctx.ellipse(
+      cx,
+      cy,
+      radius + 40 + i * 30,
+      70 + i * 20,
+      time * 0.0002 + i,
+      0,
+      Math.PI * 2
+    );
+
+    ctx.stroke();
+
+  }
+
+}
+
+function drawParticles(){
+
+  particles.forEach((p,index)=>{
+
+    ctx.beginPath();
+    ctx.fillStyle = "rgba(255,255,255,0.65)";
+    ctx.arc(p.x,p.y,p.radius,0,Math.PI*2);
+    ctx.fill();
+
+    p.x += p.speedX;
+    p.y += p.speedY;
+
+    if(p.x < 0 || p.x > canvas.width) p.speedX *= -1;
+    if(p.y < 0 || p.y > canvas.height) p.speedY *= -1;
+
+    /* CONNECTION LINES */
+
+    for(let j=index+1;j<particles.length;j++){
+
+      const p2 = particles[j];
+
+      const dx = p.x - p2.x;
+      const dy = p.y - p2.y;
+
+      const dist = Math.sqrt(dx*dx + dy*dy);
+
+      if(dist < 120){
+
+        ctx.beginPath();
+        ctx.strokeStyle = `rgba(180,220,255,${0.12 - dist/1000})`;
+        ctx.lineWidth = 1;
+        ctx.moveTo(p.x,p.y);
+        ctx.lineTo(p2.x,p2.y);
+        ctx.stroke();
+
+      }
+
+    }
+
+  });
+
+}
+
+function animate(time){
 
   ctx.clearRect(0,0,canvas.width,canvas.height);
 
-  particles.forEach(p=>{
-
-    ctx.beginPath();
-    ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
-    ctx.fillStyle='rgba(255,255,255,.8)';
-    ctx.fill();
-
-    p.x += p.dx;
-    p.y += p.dy;
-
-    if(p.x<0 || p.x>canvas.width) p.dx *= -1;
-    if(p.y<0 || p.y>canvas.height) p.dy *= -1;
-
-  });
+  drawBackgroundGlow();
+  drawParticles();
+  drawGlobe(time);
 
   requestAnimationFrame(animate);
 
 }
 
 animate();
-
-window.addEventListener('resize',()=>{
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-});
 
 </script>
 
