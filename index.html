@@ -3,108 +3,133 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Qynct One | Beyond Humanity</title>
-    <!-- Three.js (For 3D Globe) এবং AOS -->
+    <title>Qynct One | The Singularity</title>
+    <!-- 3D Engine -->
     <script src="https://cloudflare.com"></script>
-    <link href="https://unpkg.com" rel="stylesheet">
     <style>
-        :root { --accent: #0071e3; --bg: #ffffff; --silver: #f5f5f7; }
-        body { margin: 0; font-family: -apple-system, sans-serif; background: var(--bg); color: #1d1d1f; overflow-x: hidden; scroll-behavior: smooth; }
+        :root { --accent: #00f2ff; --bg: #ffffff; }
+        body { margin: 0; background: var(--bg); font-family: -apple-system, sans-serif; color: #000; overflow-x: hidden; }
         
-        /* রাজকীয় নেভিগেশন */
-        nav { padding: 30px 50px; display: flex; justify-content: space-between; position: fixed; width: 100%; top: 0; z-index: 1000; backdrop-filter: blur(20px); box-sizing: border-box; }
-        .logo { font-weight: 800; font-size: 24px; letter-spacing: -1.5px; }
+        /* ফিউচারিস্টিক ৩ডি ক্যানভাস */
+        #hero-canvas { position: fixed; top: 0; left: 0; z-index: -1; width: 100%; height: 100vh; opacity: 0.8; }
 
-        /* 3D Earth Container */
-        #canvas-container { height: 100vh; width: 100%; position: relative; display: flex; justify-content: center; align-items: center; background: radial-gradient(circle, #fff, #f0f0f0); }
-        .hero-text { position: absolute; text-align: center; z-index: 10; pointer-events: none; }
-        .hero-text h1 { font-size: clamp(60px, 12vw, 150px); letter-spacing: -8px; line-height: 0.8; margin: 0; font-weight: 900; }
+        .content-layer { position: relative; z-index: 10; padding: 0 5%; }
 
-        /* গ্লোবাল আইডি রিজার্ভ সেকশন */
-        .reserve-section { padding: 150px 50px; text-align: center; background: var(--silver); }
-        .input-group { margin-top: 40px; display: flex; justify-content: center; gap: 10px; }
-        input { padding: 20px 30px; border-radius: 40px; border: 1px solid #d2d2d7; width: 300px; font-size: 18px; outline: none; }
-        .btn { background: #000; color: #fff; padding: 20px 40px; border-radius: 40px; text-decoration: none; font-weight: 600; cursor: pointer; border: none; }
+        /* হেডার */
+        nav { display: flex; justify-content: space-between; padding: 40px 0; font-weight: 800; font-size: 20px; text-transform: uppercase; letter-spacing: 5px; }
 
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 40px; padding: 100px 50px; max-width: 1400px; margin: 0 auto; }
-        .card { background: #fff; border-radius: 45px; padding: 60px; border: 1px solid rgba(0,0,0,0.03); transition: 0.5s cubic-bezier(0.19, 1, 0.22, 1); }
-        .card:hover { transform: scale(1.05); box-shadow: 0 50px 100px rgba(0,0,0,0.1); }
+        /* হিরো সেকশন */
+        .hero { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
+        .hero h1 { font-size: clamp(60px, 15vw, 180px); font-weight: 900; letter-spacing: -10px; margin: 0; line-height: 0.8; }
+        .hero p { font-size: 20px; letter-spacing: 2px; color: #666; margin-top: 30px; text-transform: uppercase; }
 
-        /* প্রফেশনাল ফুটার */
-        footer { background: #000; color: #fff; padding: 100px 50px; text-align: center; }
-        .footer-logo { font-size: 40px; font-weight: 800; margin-bottom: 20px; display: block; }
-        .cvo { color: #86868b; font-size: 18px; margin-bottom: 40px; }
-        .copyright { border-top: 1px solid #333; padding-top: 40px; font-size: 14px; color: #444; }
+        /* অ্যাডভান্সড ড্যাশবোর্ড কার্ডস */
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 30px; padding: 100px 0; }
+        .card { 
+            background: rgba(255,255,255,0.6); backdrop-filter: blur(50px); border: 1px solid rgba(0,0,0,0.05); 
+            padding: 80px 40px; border-radius: 60px; transition: 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+        .card:hover { transform: scale(1.05); box-shadow: 0 50px 100px rgba(0,0,0,0.05); }
+        .card h2 { font-size: 40px; margin: 0; letter-spacing: -2px; }
+
+        /* রিজার্ভেশন সিস্টেম */
+        .reserve { background: #000; color: #fff; padding: 150px 5%; border-radius: 100px; text-align: center; margin-bottom: 100px; }
+        .reserve h2 { font-size: 60px; letter-spacing: -3px; }
+        .input-box { border-bottom: 2px solid var(--accent); padding: 20px; background: transparent; color: #fff; width: 300px; border-top: none; border-left: none; border-right: none; font-size: 24px; outline: none; margin-top: 50px; }
+        
+        /* সিভিপি ফুটার */
+        footer { padding: 150px 0; border-top: 1px solid #eee; }
+        .footer-content { display: flex; flex-direction: column; align-items: center; text-align: center; }
+        .name { font-size: 80px; font-weight: 900; letter-spacing: -5px; }
+        .title { color: #888; font-size: 18px; letter-spacing: 5px; margin-top: 10px; }
+        .copyright { margin-top: 100px; font-size: 12px; color: #ccc; }
     </style>
 </head>
 <body>
 
-    <nav>
-        <div class="logo">Qynct One</div>
-        <div id="countdown">Launching Soon...</div>
-    </nav>
+    <canvas id="hero-canvas"></canvas>
 
-    <section id="canvas-container">
-        <div class="hero-text" data-aos="zoom-in">
-            <h1>ONE<br>WORLD.</h1>
-            <p>Unified by Qynct Core Technology.</p>
-        </div>
-        <!-- 3D গ্লোব এখানে জেনারেট হবে -->
-        <div id="globe-canvas"></div>
-    </section>
+    <div class="content-layer">
+        <nav>
+            <div>Qynct One</div>
+            <div>Phase: Alpha-01</div>
+        </nav>
 
-    <section class="reserve-section" data-aos="fade-up">
-        <h2>Claim Your Global ID</h2>
-        <p>Be the first to join the decentralized future. No network needed.</p>
-        <div class="input-group">
-            <input type="text" placeholder="Enter your desired ID (e.g. mahi)">
-            <button class="btn">Reserve ID</button>
-        </div>
-    </section>
+        <section class="hero">
+            <h1>WORLD<br>UNIFIED.</h1>
+            <p>Direct Connection. No Network. No WiFi. Total Freedom.</p>
+        </section>
 
-    <div class="grid">
-        <div class="card" data-aos="fade-up">
-            <h3>Zyvact Social OS</h3>
-            <p>100% Free. 100% Secure. 100% Offline Connectivity.</p>
+        <div class="grid">
+            <div class="card">
+                <h2>Zyvact Social</h2>
+                <p>The first ever Neural Social OS that works where signals don't.</p>
+            </div>
+            <div class="card">
+                <h2>Q-Quantum Pay</h2>
+                <p>Global financial freedom, encrypted at the source.</p>
+            </div>
         </div>
-        <div class="card" data-aos="fade-up" data-aos-delay="200">
-            <h3>Q-Global Finance</h3>
-            <p>The only financial system that works where the internet doesn't.</p>
-        </div>
+
+        <section class="reserve">
+            <h2>Claim Your Digital Origin</h2>
+            <input type="text" class="input-box" placeholder="Your Global ID">
+            <p style="color: var(--accent); margin-top: 30px;">Status: Awaiting Deployment</p>
+        </section>
+
+        <footer>
+            <div class="footer-content">
+                <div class="name">TAMIM MAHI</div>
+                <div class="title">Chief Visionary Officer & Architect</div>
+                <p style="max-width: 500px; margin-top: 30px; color: #666;">Designing a future where the world fits in your pocket, and connection is as free as the air we breathe.</p>
+                <div class="copyright">© 2026 Qynct One Ecosystem. All Rights Reserved.</div>
+            </div>
+        </footer>
     </div>
 
-    <footer>
-        <span class="footer-logo">Qynct One</span>
-        <p class="cvo">Founded & Directed by <strong>MAHI</strong><br>Chief Visionary Officer</p>
-        <div class="copyright">
-            © 2026 Qynct One Ecosystem. All Rights Reserved. <br>
-            Designed for Global Freedom.
-        </div>
-    </footer>
-
-    <script src="https://unpkg.com"></script>
     <script>
-        AOS.init({ duration: 1500 });
-
-        // ৩ডি গ্লোব স্ক্রিপ্ট (সহজ থ্রি.জেএস উদাহরণ)
+        // ৩ডি গ্লোবাল ম্যাজিক স্ক্রিপ্ট
         const scene = new THREE.Scene();
         const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-        const renderer = new THREE.WebGLRenderer({ alpha: true });
+        const renderer = new THREE.WebGLRenderer({ canvas: document.querySelector('#hero-canvas'), alpha: true, antialias: true });
+        renderer.setPixelRatio(window.devicePixelRatio);
         renderer.setSize(window.innerWidth, window.innerHeight);
-        document.getElementById('globe-canvas').appendChild(renderer.domElement);
 
-        const geometry = new THREE.SphereGeometry(2, 32, 32);
-        const material = new THREE.MeshBasicMaterial({ color: 0x0071e3, wireframe: true });
+        // ৩ডি গ্লোব তৈরি
+        const geometry = new THREE.SphereGeometry(3, 64, 64);
+        const material = new THREE.MeshPhongMaterial({
+            color: 0x0071e3,
+            wireframe: true,
+            transparent: true,
+            opacity: 0.1
+        });
         const globe = new THREE.Mesh(geometry, material);
         scene.add(globe);
 
-        camera.position.z = 5;
+        // লাইটিং
+        const light = new THREE.PointLight(0xffffff, 1);
+        light.position.set(5, 5, 5);
+        scene.add(light);
+        scene.add(new THREE.AmbientLight(0xffffff, 0.5));
+
+        camera.position.z = 8;
+
+        // মাউস দিয়ে নিয়ন্ত্রণ
+        let mouseX = 0; let mouseY = 0;
+        document.addEventListener('mousemove', (e) => {
+            mouseX = (e.clientX - window.innerWidth / 2) * 0.001;
+            mouseY = (e.clientY - window.innerHeight / 2) * 0.001;
+        });
+
         function animate() {
             requestAnimationFrame(animate);
-            globe.rotation.y += 0.005;
+            globe.rotation.y += 0.002;
+            globe.rotation.x += mouseY * 0.5;
+            globe.rotation.z += mouseX * 0.5;
             renderer.render(scene, camera);
         }
         animate();
     </script>
 </body>
 </html>
+
