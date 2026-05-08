@@ -3,133 +3,156 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Qynct One | The Singularity</title>
-    <!-- 3D Engine -->
+    <title>Qynct One | The World in Your Pocket</title>
     <script src="https://cloudflare.com"></script>
+    <link href="https://unpkg.com" rel="stylesheet">
     <style>
-        :root { --accent: #00f2ff; --bg: #ffffff; }
-        body { margin: 0; background: var(--bg); font-family: -apple-system, sans-serif; color: #000; overflow-x: hidden; }
+        :root { --accent: #0071e3; --glass: rgba(255, 255, 255, 0.05); }
+        body { margin: 0; background: #fff; font-family: "SF Pro Display", -apple-system, sans-serif; color: #1d1d1f; overflow-x: hidden; scroll-behavior: smooth; }
         
-        /* ফিউচারিস্টিক ৩ডি ক্যানভাস */
-        #hero-canvas { position: fixed; top: 0; left: 0; z-index: -1; width: 100%; height: 100vh; opacity: 0.8; }
+        /* মহাজাগতিক ব্যাকগ্রাউন্ড */
+        #main-canvas { position: fixed; top: 0; left: 0; z-index: -1; width: 100%; height: 100vh; }
 
-        .content-layer { position: relative; z-index: 10; padding: 0 5%; }
+        nav { padding: 40px 60px; display: flex; justify-content: space-between; position: fixed; width: 100%; z-index: 1000; box-sizing: border-box; backdrop-filter: blur(30px); }
+        .logo { font-weight: 900; font-size: 26px; letter-spacing: -2px; }
 
-        /* হেডার */
-        nav { display: flex; justify-content: space-between; padding: 40px 0; font-weight: 800; font-size: 20px; text-transform: uppercase; letter-spacing: 5px; }
-
-        /* হিরো সেকশন */
         .hero { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
-        .hero h1 { font-size: clamp(60px, 15vw, 180px); font-weight: 900; letter-spacing: -10px; margin: 0; line-height: 0.8; }
-        .hero p { font-size: 20px; letter-spacing: 2px; color: #666; margin-top: 30px; text-transform: uppercase; }
+        .hero h1 { font-size: clamp(80px, 18vw, 220px); font-weight: 900; letter-spacing: -15px; line-height: 0.75; margin: 0; }
+        .hero p { font-size: 22px; letter-spacing: 5px; color: #86868b; text-transform: uppercase; margin-top: 40px; }
 
-        /* অ্যাডভান্সড ড্যাশবোর্ড কার্ডস */
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 30px; padding: 100px 0; }
-        .card { 
-            background: rgba(255,255,255,0.6); backdrop-filter: blur(50px); border: 1px solid rgba(0,0,0,0.05); 
-            padding: 80px 40px; border-radius: 60px; transition: 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
-        }
-        .card:hover { transform: scale(1.05); box-shadow: 0 50px 100px rgba(0,0,0,0.05); }
-        .card h2 { font-size: 40px; margin: 0; letter-spacing: -2px; }
+        /* অ্যাডভান্সড ইকোসিস্টেম গ্রিড */
+        .ecosystem { padding: 150px 60px; max-width: 1600px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); gap: 40px; }
+        .node-card { background: #fbfbfb; border-radius: 60px; padding: 100px 50px; transition: 1s cubic-bezier(0.19, 1, 0.22, 1); border: 1px solid rgba(0,0,0,0.03); }
+        .node-card:hover { transform: scale(1.03); box-shadow: 0 60px 120px rgba(0,0,0,0.05); }
 
-        /* রিজার্ভেশন সিস্টেম */
-        .reserve { background: #000; color: #fff; padding: 150px 5%; border-radius: 100px; text-align: center; margin-bottom: 100px; }
-        .reserve h2 { font-size: 60px; letter-spacing: -3px; }
-        .input-box { border-bottom: 2px solid var(--accent); padding: 20px; background: transparent; color: #fff; width: 300px; border-top: none; border-left: none; border-right: none; font-size: 24px; outline: none; margin-top: 50px; }
+        /* গ্লোবাল আইডি সেকশন */
+        .identity-vault { background: #000; color: #fff; padding: 200px 60px; border-radius: 120px; text-align: center; margin: 100px 20px; }
+        .identity-vault h2 { font-size: 80px; letter-spacing: -5px; }
+        .id-input { background: transparent; border: none; border-bottom: 3px solid #333; font-size: 40px; color: #fff; text-align: center; width: 80%; max-width: 600px; outline: none; margin-top: 60px; padding-bottom: 20px; }
+
+        /* প্রফেশনাল কর্পোরেট ফুটার (GOAT Status) */
+        footer { background: #f5f5f7; padding: 150px 60px; border-top: 1px solid #d2d2d7; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 50px; margin-bottom: 100px; }
+        .footer-col h4 { font-size: 14px; color: #1d1d1f; margin-bottom: 25px; text-transform: uppercase; }
+        .footer-col a { display: block; color: #424245; text-decoration: none; font-size: 14px; margin-bottom: 15px; }
         
-        /* সিভিপি ফুটার */
-        footer { padding: 150px 0; border-top: 1px solid #eee; }
-        .footer-content { display: flex; flex-direction: column; align-items: center; text-align: center; }
-        .name { font-size: 80px; font-weight: 900; letter-spacing: -5px; }
-        .title { color: #888; font-size: 18px; letter-spacing: 5px; margin-top: 10px; }
-        .copyright { margin-top: 100px; font-size: 12px; color: #ccc; }
+        .cvo-branding { text-align: center; border-top: 1px solid #d2d2d7; padding-top: 100px; }
+        .cvo-name { font-size: 100px; font-weight: 900; letter-spacing: -6px; margin: 0; }
+        .cvo-title { font-size: 18px; letter-spacing: 10px; color: #86868b; text-transform: uppercase; margin-top: 10px; }
     </style>
 </head>
 <body>
 
-    <canvas id="hero-canvas"></canvas>
+    <canvas id="main-canvas"></canvas>
 
-    <div class="content-layer">
-        <nav>
-            <div>Qynct One</div>
-            <div>Phase: Alpha-01</div>
-        </nav>
+    <nav>
+        <div class="logo">Qynct One</div>
+        <div style="font-size: 14px; letter-spacing: 2px;">GLOBAL OPERATION ALPHA</div>
+    </nav>
 
-        <section class="hero">
-            <h1>WORLD<br>UNIFIED.</h1>
-            <p>Direct Connection. No Network. No WiFi. Total Freedom.</p>
-        </section>
+    <section class="hero" data-aos="zoom-out">
+        <h1>BEYOND<br>LIMITS.</h1>
+        <p>Direct Human Interfacing. Zero Network Required.</p>
+    </section>
 
-        <div class="grid">
-            <div class="card">
-                <h2>Zyvact Social</h2>
-                <p>The first ever Neural Social OS that works where signals don't.</p>
+    <div class="ecosystem">
+        <div class="node-card" data-aos="fade-up">
+            <small style="color: var(--accent); font-weight: 700;">PROTOCOL 01</small>
+            <h2>Zyvact OS</h2>
+            <p>The first ever Neural Social Fabric. Connect without WiFi, data, or boundaries. Pure human connection.</p>
+        </div>
+        <div class="node-card" data-aos="fade-up" data-aos-delay="200">
+            <small style="color: var(--accent); font-weight: 700;">PROTOCOL 02</small>
+            <h2>Q-Finance</h2>
+            <p>Decentralized global liquid asset management. Secure your future in the local node.</p>
+        </div>
+    </div>
+
+    
+        <h2>Reserve Your Global Identity</h2>
+        <p>The Qynct One Network awaits your unique digital signature.</p>
+        <input type="text" class="id-input" placeholder="Desired Global ID">
+        <br><br>
+        <button style="background: #fff; color: #000; padding: 25px 60px; border-radius: 50px; font-weight: 700; border: none; cursor: pointer; margin-top: 40px;">ACTIVATE PROTOCOL</button>
+    </section>
+
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4>Ecosystem</h4>
+                <a href="#">Zyvact Alpha</a>
+                <a href="#">Q-Finance Core</a>
+                <a href="#">Q-Stream Ultra</a>
+                <a href="#">Q-Gaming Nodes</a>
             </div>
-            <div class="card">
-                <h2>Q-Quantum Pay</h2>
-                <p>Global financial freedom, encrypted at the source.</p>
+            <div class="footer-col">
+                <h4>Legal & Privacy</h4>
+                <a href="#">Data Sovereignty</a>
+                <a href="#">End-to-End Encryption</a>
+                <a href="#">User Rights</a>
+                <a href="#">Network Ethics</a>
+            </div>
+            <div class="footer-col">
+                <h4>Corporate</h4>
+                <a href="#">About Qynct One</a>
+                <a href="#">Vision 2050</a>
+                <a href="#">Investor Relations</a>
+                <a href="#">Global Careers</a>
             </div>
         </div>
 
-        <section class="reserve">
-            <h2>Claim Your Digital Origin</h2>
-            <input type="text" class="input-box" placeholder="Your Global ID">
-            <p style="color: var(--accent); margin-top: 30px;">Status: Awaiting Deployment</p>
-        </section>
+        <div class="cvo-branding">
+            <h2 class="cvo-name">TOSLIM ASAD MAHI</h2>
+            <p class="cvo-title">CHIEF VISIONARY OFFICER & ARCHITECT</p>
+            <p style="max-width: 700px; margin: 40px auto; color: #86868b; line-height: 1.6;">
+                Qynct One is not just a company; it is a global transition. We are shrinking the complexity of the world into a single, pocket-sized reality that functions independently of traditional infrastructure.
+            </p>
+            <p style="font-size: 12px; color: #ccc; margin-top: 80px;">© 2026 Qynct One Global Ecosystem. Patented Technology. All Rights Reserved.</p>
+        </div>
+    </footer>
 
-        <footer>
-            <div class="footer-content">
-                <div class="name">TAMIM MAHI</div>
-                <div class="title">Chief Visionary Officer & Architect</div>
-                <p style="max-width: 500px; margin-top: 30px; color: #666;">Designing a future where the world fits in your pocket, and connection is as free as the air we breathe.</p>
-                <div class="copyright">© 2026 Qynct One Ecosystem. All Rights Reserved.</div>
-            </div>
-        </footer>
-    </div>
-
+    <script src="https://unpkg.com"></script>
     <script>
-        // ৩ডি গ্লোবাল ম্যাজিক স্ক্রিপ্ট
+        AOS.init({ duration: 2000 });
+
+        // ৩ডি মেগা গ্লোব সিস্টেম
         const scene = new THREE.Scene();
         const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-        const renderer = new THREE.WebGLRenderer({ canvas: document.querySelector('#hero-canvas'), alpha: true, antialias: true });
-        renderer.setPixelRatio(window.devicePixelRatio);
+        const renderer = new THREE.WebGLRenderer({ canvas: document.querySelector('#main-canvas'), alpha: true, antialias: true });
         renderer.setSize(window.innerWidth, window.innerHeight);
 
-        // ৩ডি গ্লোব তৈরি
-        const geometry = new THREE.SphereGeometry(3, 64, 64);
+        const geometry = new THREE.SphereGeometry(4, 128, 128);
         const material = new THREE.MeshPhongMaterial({
             color: 0x0071e3,
             wireframe: true,
             transparent: true,
-            opacity: 0.1
+            opacity: 0.15
         });
         const globe = new THREE.Mesh(geometry, material);
         scene.add(globe);
 
-        // লাইটিং
-        const light = new THREE.PointLight(0xffffff, 1);
+        const light = new THREE.DirectionalLight(0xffffff, 1.5);
         light.position.set(5, 5, 5);
         scene.add(light);
-        scene.add(new THREE.AmbientLight(0xffffff, 0.5));
+        scene.add(new THREE.AmbientLight(0xffffff, 0.3));
 
-        camera.position.z = 8;
-
-        // মাউস দিয়ে নিয়ন্ত্রণ
-        let mouseX = 0; let mouseY = 0;
-        document.addEventListener('mousemove', (e) => {
-            mouseX = (e.clientX - window.innerWidth / 2) * 0.001;
-            mouseY = (e.clientY - window.innerHeight / 2) * 0.001;
-        });
+        camera.position.z = 10;
 
         function animate() {
             requestAnimationFrame(animate);
-            globe.rotation.y += 0.002;
-            globe.rotation.x += mouseY * 0.5;
-            globe.rotation.z += mouseX * 0.5;
+            globe.rotation.y += 0.001;
+            globe.rotation.x += 0.0005;
             renderer.render(scene, camera);
         }
         animate();
+
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
     </script>
 </body>
 </html>
+
 
