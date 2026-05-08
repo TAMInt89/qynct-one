@@ -3,43 +3,162 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Qynct One | The Universal Ecosystem</title>
+    <title>Qynct One | The Universal Future</title>
+    <!-- প্রলেভেলের ফন্ট এবং অ্যানিমেশন লাইব্রেরি -->
+    <link href="https://unpkg.com" rel="stylesheet">
     <style>
-        body { margin: 0; font-family: -apple-system, sans-serif; background: #fff; color: #1d1d1f; }
-        .nav { padding: 20px; text-align: center; border-bottom: 1px solid #d2d2d7; }
-        .hero { text-align: center; padding: 100px 20px; background: radial-gradient(circle at center, #fbfbfb, #f5f5f7); }
-        h1 { font-size: 56px; font-weight: 700; margin: 0; }
-        p { font-size: 24px; color: #86868b; margin: 10px 0 40px; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; padding: 50px; max-width: 1200px; margin: 0 auto; }
-        .card { background: #f5f5f7; border-radius: 20px; padding: 40px; text-align: center; transition: 0.3s; text-decoration: none; color: inherit; }
-        .card:hover { transform: scale(1.03); background: #f0f0f2; }
-        .btn { background: #0071e3; color: white; padding: 12px 25px; border-radius: 25px; text-decoration: none; font-weight: 600; display: inline-block; margin-top: 20px; }
-        .badge { font-size: 12px; background: #34c759; color: white; padding: 4px 10px; border-radius: 10px; margin-bottom: 10px; display: inline-block; }
+        :root {
+            --primary: #0071e3;
+            --glass: rgba(255, 255, 255, 0.7);
+            --bg: #fbfbfb;
+        }
+
+        body {
+            margin: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif;
+            background: var(--bg);
+            color: #1d1d1f;
+            overflow-x: hidden;
+        }
+
+        /* রাজকীয় ব্যাকগ্রাউন্ড অ্যানিমেশন */
+        .bg-gradient {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at 50% 50%, #e0e0e0 0%, #fbfbfb 100%);
+            z-index: -1;
+        }
+
+        .nav {
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0; z-index: 100;
+        }
+
+        .logo { font-weight: 700; font-size: 22px; letter-spacing: -1px; }
+
+        .hero {
+            height: 90vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: clamp(40px, 8vw, 90px);
+            font-weight: 800;
+            margin: 0;
+            letter-spacing: -3px;
+            background: linear-gradient(180deg, #1d1d1f 0%, #434343 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 24px;
+            color: #86868b;
+            max-width: 700px;
+            margin-top: 20px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            padding: 100px 50px;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background: var(--glass);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 35px;
+            padding: 50px;
+            text-align: left;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.02);
+        }
+
+        .card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.08);
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 6px 15px;
+            border-radius: 50px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+        }
+
+        .badge-upcoming { background: #e8e8ed; color: #86868b; }
+        .badge-dev { background: #0071e3; color: #fff; }
+
+        .card h2 { font-size: 32px; margin: 10px 0; letter-spacing: -1px; }
+        .card p { color: #86868b; line-height: 1.5; font-size: 18px; }
+
+        .footer {
+            text-align: center;
+            padding: 50px;
+            font-size: 14px;
+            color: #86868b;
+        }
     </style>
 </head>
 <body>
-    <div class="nav"><strong>Qynct One</strong></div>
-    <div class="hero">
-        <h1>Welcome to the Future.</h1>
-        <p>One World. One Ecosystem. Zero Boundaries.</p>
-        <div class="grid">
-            <a href="https://onrender.com" class="card">
-                <span class="badge">Hybrid (Online/Offline)</span>
-                <h2>Zyvact</h2>
-                <p>Social OS for the new generation.</p>
-                <span class="btn">Launch Alpha</span>
-            </a>
-            <div class="card">
-                <span class="badge">Coming Soon</span>
-                <h2>Q-Finance</h2>
-                <p>Secure financial freedom for everyone.</p>
-            </div>
-            <div class="card">
-                <span class="badge">Coming Soon</span>
-                <h2>Q-Stream</h2>
-                <p>Entertainment without limits.</p>
-            </div>
+
+    <div class="bg-gradient"></div>
+
+    <nav class="nav">
+        <div class="logo">Qynct One</div>
+    </nav>
+
+    <section class="hero" data-aos="zoom-in" data-aos-duration="1500">
+        <h1>Redefining World.</h1>
+        <p>A unified ecosystem for humanity. Built for speed, security, and zero-boundaries.</p>
+    </section>
+
+    <div class="grid">
+        <div class="card" data-aos="fade-up" data-aos-delay="100">
+            <span class="badge badge-dev">In Development</span>
+            <h2>Zyvact</h2>
+            <p>The next-gen Social OS. Connecting the world without boundaries or networks.</p>
+        </div>
+
+        <div class="card" data-aos="fade-up" data-aos-delay="300">
+            <span class="badge badge-upcoming">Upcoming</span>
+            <h2>Q-Finance</h2>
+            <p>The smartest financial layer for the Qynct ecosystem. Decentralized & Secure.</p>
+        </div>
+
+        <div class="card" data-aos="fade-up" data-aos-delay="500">
+            <span class="badge badge-upcoming">Upcoming</span>
+            <h2>Q-Stream</h2>
+            <p>Experience entertainment in 8K quality, anywhere in the world, even offline.</p>
         </div>
     </div>
+
+    <footer class="footer">
+        © 2026 Qynct One. Empowering the Global Citizen.
+    </footer>
+
+    <!-- স্ক্রল অ্যানিমেশন স্ক্রিপ্ট -->
+    <script src="https://unpkg.com"></script>
+    <script>
+        AOS.init();
+    </script>
 </body>
 </html>
