@@ -3,149 +3,141 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Qynct One | TOSLIM ASAD MAHI</title>
+    <title>Qynct One | Beyond Humanity</title>
     <script src="https://cloudflare.com"></script>
     <style>
-        :root { --accent: #0071e3; --text: #1d1d1f; }
-        body { margin: 0; background: #fff; font-family: -apple-system, sans-serif; color: var(--text); overflow-x: hidden; }
+        :root { --accent: #0071e3; --bg: #ffffff; }
+        body { margin: 0; background: var(--bg); font-family: -apple-system, system-ui, sans-serif; color: #1d1d1f; overflow-x: hidden; scroll-behavior: smooth; }
         
-        /* মেগা ৩ডি ইন্টারফেস */
-        #canvas-bg { position: fixed; top: 0; left: 0; z-index: -1; width: 100%; height: 100vh; }
+        /* সিনেম্যাটিক ব্যাকগ্রাউন্ড */
+        #canvas-stage { position: fixed; top: 0; left: 0; z-index: -1; width: 100%; height: 100vh; }
 
-        nav { padding: 40px; display: flex; justify-content: space-between; position: fixed; width: 100%; z-index: 1000; box-sizing: border-box; backdrop-filter: blur(20px); }
-        .logo { font-weight: 900; font-size: 24px; letter-spacing: -2px; }
+        nav { padding: 30px 60px; display: flex; justify-content: space-between; position: fixed; width: 100%; z-index: 1000; box-sizing: border-box; backdrop-filter: blur(15px); }
+        .logo { font-weight: 900; font-size: 22px; letter-spacing: -1.5px; }
 
         .hero { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
-        .hero h1 { font-size: clamp(60px, 15vw, 180px); font-weight: 900; letter-spacing: -10px; margin: 0; }
-        .hero .owner { font-size: 18px; letter-spacing: 5px; color: #86868b; text-transform: uppercase; margin-top: 20px; }
+        .hero h1 { font-size: clamp(60px, 12vw, 160px); font-weight: 900; letter-spacing: -8px; line-height: 0.85; margin: 0; }
+        .hero p { font-size: 18px; color: #86868b; letter-spacing: 4px; margin-top: 30px; text-transform: uppercase; }
 
-        /* ফিউচারিস্টিক ইন্টারঅ্যাকশন সেকশন */
-        .grid-section { padding: 150px 50px; max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 50px; }
-        .glass-card { background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(50px); border-radius: 50px; padding: 80px 50px; border: 1px solid rgba(0,0,0,0.05); transition: 0.6s cubic-bezier(0.2, 0.8, 0.2, 1); }
-        .glass-card:hover { transform: scale(1.05) translateY(-20px); box-shadow: 0 50px 100px rgba(0,0,0,0.08); }
+        /* অ্যাডভান্সড ড্যাশবোর্ড গ্রিড */
+        .section-grid { padding: 100px 60px; max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)); gap: 30px; }
+        .glass-node { background: rgba(255,255,255,0.7); backdrop-filter: blur(40px); border-radius: 40px; padding: 60px; border: 1px solid rgba(0,0,0,0.04); transition: 0.8s cubic-bezier(0.2, 0.8, 0.2, 1); }
+        .glass-node:hover { transform: scale(1.03) translateY(-15px); box-shadow: 0 40px 80px rgba(0,0,0,0.06); }
 
-        /* মেগা ফুটার */
-        footer { background: #000; color: #fff; padding: 150px 50px; border-radius: 100px 100px 0 0; text-align: center; }
-        .footer-name { font-size: clamp(40px, 8vw, 100px); font-weight: 900; letter-spacing: -5px; margin: 0; }
-        .footer-desc { color: #86868b; font-size: 18px; margin-top: 20px; max-width: 800px; margin-left: auto; margin-right: auto; }
-        
-        .links-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; margin-top: 100px; text-align: left; max-width: 1000px; margin-left: auto; margin-right: auto; }
-        .links-grid h4 { color: #fff; margin-bottom: 20px; font-size: 14px; text-transform: uppercase; }
-        .links-grid a { color: #86868b; text-decoration: none; display: block; margin-bottom: 10px; font-size: 14px; transition: 0.3s; }
-        .links-grid a:hover { color: #fff; }
+        /* প্রফেশনাল ফুটার ও ভিশন */
+        footer { background: #f5f5f7; padding: 120px 60px; border-top: 1px solid #d2d2d7; }
+        .footer-links { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; margin-bottom: 80px; }
+        .footer-links h4 { font-size: 12px; text-transform: uppercase; color: #1d1d1f; margin-bottom: 20px; }
+        .footer-links a { display: block; color: #424245; text-decoration: none; font-size: 13px; margin-bottom: 12px; }
+
+        .visionary-note { border-top: 1px solid #d2d2d7; padding-top: 60px; text-align: left; max-width: 800px; }
+        .signature { font-size: 28px; font-weight: 800; margin: 0; letter-spacing: -1px; }
+        .role { font-size: 12px; color: #86868b; text-transform: uppercase; letter-spacing: 2px; }
+        .quote { font-style: italic; color: #424245; margin-top: 20px; font-size: 16px; line-height: 1.6; }
     </style>
 </head>
 <body>
 
-    <canvas id="canvas-bg"></canvas>
+    <canvas id="canvas-stage"></canvas>
 
     <nav>
         <div class="logo">Qynct One</div>
-        <div style="font-size: 12px; font-weight: 700;">PROTOCOL ALPHA v1.0</div>
+        <div style="font-size: 11px; font-weight: 700; color: var(--accent);">GLOBAL NODE ACTIVE</div>
     </nav>
 
-    <section class="hero">
-        <h1 id="main-title">EVERYTHING.</h1>
-        <div class="owner">Directed by Toslim Asad Mahi</div>
+    <section class="hero" data-aos="zoom-in">
+        <h1>THE<br>SINGULARITY.</h1>
+        <p>A Universal Fabric for Human Connection.</p>
     </section>
 
-    <div class="grid-section">
-        <div class="glass-card">
-            <h2>The Ecosystem</h2>
-            <p>A unified layer where Zyvact, Q-Finance, and Q-Stream function as one local node. No internet. No limits.</p>
+    <div class="section-grid">
+        <div class="glass-node">
+            <span style="font-size: 11px; font-weight: 800; color: var(--accent);">01 / ZYVACT</span>
+            <h2 style="font-size: 32px; margin: 15px 0;">Decentralized OS</h2>
+            <p style="color: #424245; font-size: 17px;">The first communication layer that exists beyond the internet. Pure, raw, and boundary-less.</p>
         </div>
-        <div class="glass-card">
-            <h2>The Security</h2>
-            <p>End-to-end neural encryption. Your data never leaves your device. Total sovereignty over your digital life.</p>
+        <div class="glass-node">
+            <span style="font-size: 11px; font-weight: 800; color: var(--accent);">02 / SECURITY</span>
+            <h2 style="font-size: 32px; margin: 15px 0;">Quantum Shield</h2>
+            <p style="color: #424245; font-size: 17px;">Your data is locked in the local node. No cloud, no central server, just total sovereignty.</p>
         </div>
     </div>
 
     <footer>
-        <h2 class="footer-name">TOSLIM ASAD MAHI</h2>
-        <p class="footer-desc">Founder & Chief Visionary Officer. Architecting the global transition toward local-first decentralized connectivity.</p>
-        
-        <div class="links-grid">
+        <div class="footer-links">
             <div>
-                <h4>Company</h4>
-                <a href="#">About Qynct</a>
-                <a href="#">Vision 2050</a>
-                <a href="#">Press Kit</a>
-            </div>
-            <div>
-                <h4>Technology</h4>
-                <a href="#">Offline Protocol</a>
-                <a href="#">Zyvact OS</a>
-                <a href="#">Quantum Pay</a>
+                <h4>Ecosystem</h4>
+                <a href="#">Zyvact Alpha</a>
+                <a href="#">Q-Finance</a>
+                <a href="#">Q-Stream</a>
             </div>
             <div>
                 <h4>Legal</h4>
-                <a href="#">Privacy Policy</a>
-                <a href="#">Global Terms</a>
-                <a href="#">Disclaimer</a>
+                <a href="#">Privacy Protocol</a>
+                <a href="#">User Rights</a>
+                <a href="#">Governance</a>
+            </div>
+            <div>
+                <h4>Network</h4>
+                <a href="#">Node Status</a>
+                <a href="#">Offline Engine</a>
+                <a href="#">Documentation</a>
             </div>
         </div>
-        <p style="margin-top: 100px; color: #333; font-size: 12px;">© 2026 Qynct One Global. Directed by Mahi. All Rights Reserved.</p>
+
+        <div class="visionary-note">
+            <p class="signature">TOSLIM ASAD MAHI</p>
+            <p class="role">Founder & Chief Visionary Officer</p>
+            <p class="quote">
+                "Our mission is to shrink the complexity of the entire world into a single, pocket-sized reality—independent of infrastructure and accessible to every human being for free."
+            </p>
+            <p style="font-size: 11px; color: #86868b; margin-top: 50px;">© 2026 Qynct One Global Ecosystem. Designed for the Future of Humanity.</p>
+        </div>
     </footer>
 
     <script>
-        // ৩ডি সিনেম্যাটিক ইঞ্জিন
         const scene = new THREE.Scene();
         const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-        const renderer = new THREE.WebGLRenderer({ canvas: document.querySelector('#canvas-bg'), antialias: true, alpha: true });
+        const renderer = new THREE.WebGLRenderer({ canvas: document.querySelector('#canvas-stage'), antialias: true, alpha: true });
         renderer.setSize(window.innerWidth, window.innerHeight);
 
-        // নক্ষত্রপুঞ্জ এবং পার্টিকেল সিস্টেম
-        const particlesGeometry = new THREE.BufferGeometry();
-        const count = 5000;
-        const positions = new Float32Array(count * 3);
-        for(let i = 0; i < count * 3; i++) positions[i] = (Math.random() - 0.5) * 20;
-        particlesGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-        const particlesMaterial = new THREE.PointsMaterial({ size: 0.02, color: 0x0071e3 });
-        const particles = new THREE.Points(particlesGeometry, particlesMaterial);
-        scene.add(particles);
+        // নক্ষত্রপুঞ্জ (Starfield)
+        const starGeo = new THREE.BufferGeometry();
+        const starCount = 6000;
+        const starPos = new Float32Array(starCount * 3);
+        for(let i=0; i<starCount*3; i++) starPos[i] = (Math.random() - 0.5) * 30;
+        starGeo.setAttribute('position', new THREE.BufferAttribute(starPos, 3));
+        const starMat = new THREE.PointsMaterial({ size: 0.015, color: 0x0071e3 });
+        const stars = new THREE.Points(starGeo, starMat);
+        scene.add(stars);
 
-        // গ্লোয়িং ব্লু গ্লোব
-        const geometry = new THREE.SphereGeometry(3.5, 64, 64);
-        const material = new THREE.MeshPhongMaterial({
-            color: 0x0071e3,
-            wireframe: true,
-            transparent: true,
-            opacity: 0.1
-        });
-        const globe = new THREE.Mesh(geometry, material);
-        scene.add(globe);
+        // গ্লোয়িং কোর (The 3D Center)
+        const geometry = new THREE.SphereGeometry(3, 128, 128);
+        const material = new THREE.MeshPhongMaterial({ color: 0x0071e3, wireframe: true, transparent: true, opacity: 0.08 });
+        const core = new THREE.Mesh(geometry, material);
+        scene.add(core);
 
         const light = new THREE.PointLight(0xffffff, 2);
         light.position.set(5, 5, 5);
         scene.add(light);
         camera.position.z = 8;
 
-        // মাউস ট্র্যাকিং
         let mouseX = 0; let mouseY = 0;
-        document.addEventListener('mousemove', (event) => {
-            mouseX = (event.clientX / window.innerWidth - 0.5) * 2;
-            mouseY = (event.clientY / window.innerHeight - 0.5) * 2;
+        document.addEventListener('mousemove', (e) => {
+            mouseX = (e.clientX / window.innerWidth - 0.5) * 0.5;
+            mouseY = (e.clientY / window.innerHeight - 0.5) * 0.5;
         });
 
         function animate() {
             requestAnimationFrame(animate);
-            globe.rotation.y += 0.001;
-            particles.rotation.y += 0.0005;
-            
-            // স্মুথ মাউস মুভমেন্ট
+            core.rotation.y += 0.0015;
+            stars.rotation.y += 0.0003;
             camera.position.x += (mouseX - camera.position.x) * 0.05;
             camera.position.y += (-mouseY - camera.position.y) * 0.05;
             camera.lookAt(scene.position);
-            
             renderer.render(scene, camera);
         }
         animate();
-
-        window.addEventListener('resize', () => {
-            camera.aspect = window.innerWidth / window.innerHeight;
-            camera.updateProjectionMatrix();
-            renderer.setSize(window.innerWidth, window.innerHeight);
-        });
     </script>
 </body>
 </html>
