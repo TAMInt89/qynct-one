@@ -4,25 +4,86 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Qynct One | TOSLIM ASAD MAHI</title>
-    <link rel="stylesheet" href="style.css">
     <script src="https://cloudflare.com"></script>
+    <style>
+        body { margin: 0; background: #000; color: #fff; font-family: -apple-system, sans-serif; overflow: hidden; }
+        #canvas-stage { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; z-index: -1; }
+        nav { padding: 40px; display: flex; justify-content: space-between; position: fixed; width: 100%; box-sizing: border-box; }
+        .logo { font-weight: 900; font-size: 26px; letter-spacing: -2px; }
+        .hero { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; pointer-events: none; }
+        h1 { font-size: clamp(60px, 15vw, 220px); font-weight: 900; letter-spacing: -12px; line-height: 0.8; margin: 0; }
+        .owner-sub { font-size: 14px; letter-spacing: 5px; color: #888; text-transform: uppercase; margin-top: 40px; }
+        .footer-note { position: fixed; bottom: 50px; left: 50px; border-left: 3px solid #fff; padding-left: 25px; }
+        .footer-note h3 { font-size: 32px; font-weight: 800; margin: 0; letter-spacing: -1px; }
+        .footer-note p { font-size: 11px; color: #888; text-transform: uppercase; letter-spacing: 3px; margin-top: 5px; }
+    </style>
 </head>
 <body>
-    <div id="globe-container"></div>
+
+    <canvas id="canvas-stage"></canvas>
+
     <nav>
         <div class="logo">Qynct One</div>
-        <div class="status">SYSTEM: ALPHA-01</div>
+        <div style="font-size: 11px; letter-spacing: 2px;">GLOBAL PROTOCOL ALPHA</div>
     </nav>
+
     <section class="hero">
-        <h1>BEYOND<br>HUMANITY.</h1>
-        <p>Architected by Toslim Asad Mahi</p>
+        <h1>BEYOND<br>LIMITS.</h1>
+        <p class="owner-sub">Architected by Toslim Asad Mahi</p>
     </section>
-    <footer class="footer">
-        <div class="note">
-            <h3>TOSLIM ASAD MAHI</h3>
-            <p>Founder & Chief Visionary Officer</p>
-        </div>
-    </footer>
-    <script src="app.js"></script>
+
+    <div class="footer-note">
+        <h3>TOSLIM ASAD MAHI</h3>
+        <p>Founder & Chief Visionary Officer</p>
+    </div>
+
+    <script>
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('canvas-stage'), antialias: true, alpha: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+
+        // নক্ষত্রপুঞ্জ (Video-like animation)
+        const starGeo = new THREE.BufferGeometry();
+        const starPos = new Float32Array(10000 * 3);
+        for(let i=0; i<30000; i++) starPos[i] = (Math.random() - 0.5) * 50;
+        starGeo.setAttribute('position', new THREE.BufferAttribute(starPos, 3));
+        const stars = new THREE.Points(starGeo, new THREE.PointsMaterial({ size: 0.02, color: 0x0071e3 }));
+        scene.add(stars);
+
+        // গ্লোয়িং এনার্জি গ্লোব (The Globe you wanted)
+        const geometry = new THREE.SphereGeometry(3.5, 64, 64);
+        const material = new THREE.MeshPhongMaterial({ 
+            color: 0x0071e3, 
+            wireframe: true, 
+            transparent: true, 
+            opacity: 0.2 
+        });
+        const globe = new THREE.Mesh(geometry, material);
+        scene.add(globe);
+
+        const light = new THREE.PointLight(0xffffff, 2);
+        light.position.set(5, 5, 5);
+        scene.add(light);
+        camera.position.z = 10;
+
+        // মাউস দিয়ে নিয়ন্ত্রণ
+        let mouseX = 0; let mouseY = 0;
+        document.addEventListener('mousemove', (e) => {
+            mouseX = (e.clientX / window.innerWidth - 0.5) * 2;
+            mouseY = (e.clientY / window.innerHeight - 0.5) * 2;
+        });
+
+        function animate() {
+            requestAnimationFrame(animate);
+            globe.rotation.y += 0.002;
+            stars.rotation.y += 0.0005;
+            camera.position.x += (mouseX - camera.position.x) * 0.05;
+            camera.position.y += (-mouseY - camera.position.y) * 0.05;
+            camera.lookAt(scene.position);
+            renderer.render(scene, camera);
+        }
+        animate();
+    </script>
 </body>
 </html>
