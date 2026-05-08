@@ -4,110 +4,148 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Qynct One | The Sovereign Masterpiece</title>
-    <!-- GSAP Cinematic Library -->
+    <!-- Cinematic Frameworks -->
     <script src="https://cloudflare.com"></script>
     <script src="https://cloudflare.com"></script>
     <style>
-        :root { --accent: #0071e3; --white: #ffffff; --dark: #000000; }
-        body { margin: 0; background: #fff; font-family: -apple-system, system-ui, sans-serif; overflow-x: hidden; }
+        :root { --accent: #0071e3; --silver: #f5f5f7; --white: #ffffff; }
+        body { margin: 0; background: var(--white); font-family: -apple-system, sans-serif; color: #1d1d1f; overflow-x: hidden; scroll-behavior: smooth; }
         
-        /* সিনেম্যাটিক সেকশন হাইট */
-        section { height: 100vh; width: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; position: relative; }
+        /* গ্লোবাল ম্যাপ কন্টেইনার */
+        .map-bg {
+            position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            width: 90vw; height: 90vh; opacity: 0.05; z-index: -1;
+            background: url('https://wikimedia.org') no-repeat center;
+            background-size: contain; filter: grayscale(1);
+        }
 
-        nav { padding: 40px 60px; display: flex; justify-content: space-between; position: fixed; width: 100%; z-index: 1000; box-sizing: border-box; backdrop-filter: blur(30px); }
+        nav { padding: 40px 60px; display: flex; justify-content: space-between; position: fixed; width: 100%; z-index: 1000; box-sizing: border-box; backdrop-filter: blur(20px); border-bottom: 1px solid rgba(0,0,0,0.05); }
         .logo { font-weight: 900; font-size: 26px; letter-spacing: -2px; }
 
-        /* হিরো সেকশন - অ্যাপল স্টাইল */
-        .hero { background: #fff; }
-        .hero h1 { font-size: clamp(80px, 15vw, 220px); font-weight: 900; letter-spacing: -12px; line-height: 0.8; margin: 0; color: #000; opacity: 0; transform: translateY(50px); }
-        .hero .tagline { font-size: 16px; letter-spacing: 10px; color: #888; text-transform: uppercase; margin-top: 50px; font-weight: 700; opacity: 0; }
+        section { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 100px 60px; box-sizing: border-box; }
 
-        /* ডাইনামিক ব্ল্যাক সেকশন */
-        .black-vault { background: #000; color: #fff; border-radius: 100px 100px 0 0; }
-        .black-vault h2 { font-size: clamp(50px, 10vw, 120px); letter-spacing: -5px; }
+        /* ১. হিরো সেকশন */
+        .sec-1 h1 { font-size: clamp(80px, 18vw, 250px); font-weight: 900; letter-spacing: -18px; line-height: 0.8; margin: 0; }
+        .sec-1 p { font-size: 14px; letter-spacing: 12px; color: #86868b; text-transform: uppercase; margin-top: 50px; font-weight: 800; }
 
-        /* রাজকীয় ফুটার ইন্টারফেস */
+        /* ২. ইকোসিস্টেম সেকশন */
+        .sec-2 { background: var(--silver); border-radius: 100px 100px 0 0; }
+        .mega-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 40px; width: 100%; max-width: 1400px; }
+        .eco-card { background: #fff; padding: 80px 50px; border-radius: 60px; border: 1px solid rgba(0,0,0,0.03); transition: 0.5s; }
+        .eco-card:hover { transform: translateY(-20px); box-shadow: 0 40px 80px rgba(0,0,0,0.05); }
+        .eco-card h2 { font-size: 40px; margin-bottom: 20px; letter-spacing: -2px; }
+
+        /* ৩. ফাউন্টার্স ভিশন সেকশন */
+        .sec-3 { text-align: left; align-items: flex-start; max-width: 1200px; margin: 0 auto; }
+        .vision-box { border-left: 4px solid var(--accent); padding-left: 60px; }
+        .vision-box h2 { font-size: 80px; font-weight: 900; letter-spacing: -5px; margin: 0; }
+        .vision-box p { font-size: 24px; line-height: 1.6; color: #424245; margin-top: 40px; font-style: italic; max-width: 800px; }
+
+        /* রাজকীয় ফুটার */
         footer { background: #fbfbfb; padding: 150px 80px; border-top: 1px solid #d2d2d7; }
-        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 60px; margin-bottom: 120px; }
-        .footer-grid h4 { font-size: 12px; text-transform: uppercase; color: #000; margin-bottom: 35px; letter-spacing: 3px; font-weight: 800; }
-        .footer-grid a { display: block; color: #86868b; text-decoration: none; font-size: 15px; margin-bottom: 20px; transition: 0.3s; }
-        .footer-grid a:hover { color: var(--accent); padding-left: 10px; }
+        .footer-hub { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 60px; margin-bottom: 120px; }
+        .hub-col h4 { font-size: 12px; text-transform: uppercase; color: #000; margin-bottom: 40px; letter-spacing: 4px; font-weight: 800; }
+        .hub-col a { display: block; color: #86868b; text-decoration: none; font-size: 14px; margin-bottom: 22px; transition: 0.4s; }
+        .hub-col a:hover { color: var(--accent); padding-left: 10px; }
 
-        .signature-box { border-top: 1px solid #d2d2d7; padding-top: 100px; text-align: left; }
-        .name-big { font-size: clamp(40px, 8vw, 110px); font-weight: 900; margin: 0; letter-spacing: -6px; }
-        .role-title { font-size: 14px; color: var(--accent); letter-spacing: 8px; text-transform: uppercase; margin-top: 15px; font-weight: 800; }
+        .signature { border-top: 1px solid #d2d2d7; padding-top: 100px; }
+        .name { font-size: clamp(40px, 8vw, 120px); font-weight: 900; margin: 0; letter-spacing: -6px; }
+        .title { font-size: 14px; color: var(--accent); letter-spacing: 10px; text-transform: uppercase; margin-top: 15px; font-weight: 800; }
     </style>
 </head>
 <body>
 
+    <div class="map-bg"></div>
+
     <nav>
         <div class="logo">Qynct One</div>
-        <div style="font-size: 11px; letter-spacing: 5px; font-weight: 900; color: var(--accent);">GLOBAL SOVEREIGN PROTOCOL</div>
+        <div style="font-size: 11px; letter-spacing: 5px; font-weight: 900; color: var(--accent);">GLOBAL SOVEREIGN PROTOCOL v12.0</div>
     </nav>
 
-    <section class="hero">
-        <h1 id="hero-title">EVERYTHING.</h1>
-        <div class="tagline" id="hero-tag">Directed by Toslim Asad Mahi</div>
+    <section class="sec-1">
+        <h1 id="main-h1">UNIFIED.</h1>
+        <p>Architected by Toslim Asad Mahi</p>
     </section>
 
-    <section class="black-vault">
-        <div style="max-width: 900px; text-align: center;">
-            <h2 id="sec-title">Beyond The Cloud.</h2>
-            <p style="font-size: 20px; color: #888; line-height: 1.6;">Qynct One is a decentralized reality that works without infrastructure. Free connection for every human being on the planet.</p>
+    <section class="sec-2">
+        <div class="mega-grid">
+            <div class="eco-card">
+                <small style="color: var(--accent); font-weight: 900;">01</small>
+                <h2>Zyvact</h2>
+                <p>Decentralized Social OS. Built beyond traditional network boundaries. Free. Private. Global.</p>
+            </div>
+            <div class="eco-card">
+                <small style="color: var(--accent); font-weight: 900;">02</small>
+                <h2>Quantum Pay</h2>
+                <p>Absolute financial sovereignty anchored in the local mesh. Unhackable and infinite.</p>
+            </div>
+            <div class="eco-card">
+                <small style="color: var(--accent); font-weight: 900;">03</small>
+                <h2>Infinity</h2>
+                <p>8K Cinematic streaming delivered through neural nodes. Zero infrastructure required.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="sec-3">
+        <div class="vision-box">
+            <h2>The Legacy</h2>
+            <p>"My mission is to shrink the complexity of human civilization into a single, pocket-sized reality—independent of infrastructure and accessible to every human being for free."</p>
+            <div style="margin-top: 60px;">
+                <span style="font-size: 14px; letter-spacing: 5px; color: var(--accent); font-weight: 800;">DIRECTED BY</span>
+                <h3 style="font-size: 40px; margin: 10px 0;">Toslim Asad Mahi</h3>
+            </div>
         </div>
     </section>
 
     <footer>
-        <div class="footer-grid">
-            <div>
+        <div class="footer-hub">
+            <div class="hub-col">
                 <h4>Solutions</h4>
                 <a href="#">Zyvact Social</a>
                 <a href="#">Quantum Pay</a>
                 <a href="#">Infinity Stream</a>
+                <a href="#">Neural Link</a>
             </div>
-            <div>
-                <h4>Network</h4>
+            <div class="hub-col">
+                <h4>Infrastructure</h4>
                 <a href="#">Satellite Mesh</a>
-                <a href="#">Offline Core</a>
-                <a href="#">Neural Node</a>
+                <a href="#">Offline Engine</a>
+                <a href="#">Global Nodes</a>
+                <a href="#">Latencies</a>
             </div>
-            <div>
+            <div class="hub-col">
                 <h4>Corporate</h4>
-                <a href="#">About Qynct</a>
+                <a href="#">About Qynct One</a>
                 <a href="#">Vision 2050</a>
-                <a href="#">Investor Hub</a>
+                <a href="#">Investor Relations</a>
+                <a href="#">Leadership</a>
             </div>
-            <div>
+            <div class="hub-col">
                 <h4>Legal</h4>
                 <a href="#">Privacy Protocol</a>
-                <a href="#">Compliance</a>
-                <a href="#">Terms</a>
+                <a href="#">User Rights</a>
+                <a href="#">Governance</a>
+                <a href="#">Ethics</a>
             </div>
         </div>
 
-        <div class="signature-box">
-            <h2 class="name-big">TOSLIM ASAD MAHI</h2>
-            <p class="role-title">Founder & Chief Visionary Officer</p>
-            <p style="color: #666; max-width: 700px; margin-top: 50px; font-size: 22px; font-style: italic; line-height: 1.8;">
-                "I am shrinking the entire world into a single, pocket-sized reality—independent, free, and unified as one single organism."
-            </p>
+        <div class="signature">
+            <h2 class="name">TOSLIM ASAD MAHI</h2>
+            <p class="title">Founder & Chief Visionary Officer</p>
+            <p style="margin-top: 150px; font-size: 11px; color: #ccc; text-align: center;">© 2026 Qynct One Global Ecosystem. Patented Worldwide. Directed by Mahi.</p>
         </div>
-        <p style="margin-top: 150px; font-size: 11px; color: #ccc; text-align: center;">© 2026 Qynct One Global Ecosystem. Directed by Mahi. Patented v11.0.</p>
     </footer>
 
     <script>
         gsap.registerPlugin(ScrollTrigger);
-
-        // সিনেমার মতো এন্ট্রান্স অ্যানিমেশন
-        gsap.to("#hero-title", { duration: 2, y: 0, opacity: 1, ease: "power4.out", delay: 0.5 });
-        gsap.to("#hero-tag", { duration: 2, opacity: 1, ease: "power2.out", delay: 1.5 });
-
-        // স্ক্রল রিভিল অ্যানিমেশন
-        gsap.from("#sec-title", {
-            scrollTrigger: {
-                trigger: ".black-vault", start: "top 80%", toggleActions: "play none none reverse"
-            },
-            y: 100, opacity: 0, duration: 1.5, ease: "power3.out"
+        gsap.from("#main-h1", { duration: 2.5, y: 150, opacity: 0, ease: "power4.out" });
+        
+        gsap.utils.toArray(".eco-card").forEach(card => {
+            gsap.from(card, {
+                scrollTrigger: { trigger: card, start: "top 90%" },
+                y: 100, opacity: 0, duration: 1.5
+            });
         });
     </script>
 </body>
