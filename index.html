@@ -3,94 +3,102 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Qynct One | TOSLIM ASAD MAHI</title>
-    <!-- Professional 3D Engine -->
+    <title>Qynct One | The Sovereign Masterpiece</title>
+    <!-- প্রফেশনাল ৩ডি এবং অ্যানিমেশন ইঞ্জিন -->
+    <script src="https://cloudflare.com"></script>
     <script src="https://cloudflare.com"></script>
     <link href="https://unpkg.com" rel="stylesheet">
     <style>
-        :root { --accent: #00d2ff; --white: #ffffff; --bg: #000000; }
-        body { margin: 0; background: var(--bg); font-family: -apple-system, system-ui, sans-serif; color: var(--white); overflow-x: hidden; scroll-behavior: smooth; }
+        :root { --accent: #0071e3; --white: #ffffff; --text: #1d1d1f; --glass: rgba(255, 255, 255, 0.8); }
+        body { margin: 0; background: #fff; font-family: -apple-system, system-ui, sans-serif; color: var(--text); overflow-x: hidden; scroll-behavior: smooth; }
         
-        /* মেগা গ্যালাক্সি ব্যাকগ্রাউন্ড */
-        #galaxy-stage { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; z-index: -1; }
+        /* ৩ডি হোয়াইট স্টুডিও ইন্টারফেস */
+        #canvas-stage { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; z-index: -1; background: radial-gradient(circle at center, #ffffff 0%, #f5f5f7 100%); }
 
-        nav { padding: 40px 60px; display: flex; justify-content: space-between; position: fixed; width: 100%; z-index: 1000; box-sizing: border-box; backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255,255,255,0.05); }
-        .logo { font-weight: 900; font-size: 26px; letter-spacing: -2px; }
+        nav { padding: 30px 60px; display: flex; justify-content: space-between; position: fixed; width: 100%; z-index: 1000; box-sizing: border-box; backdrop-filter: blur(30px); border-bottom: 1px solid rgba(0,0,0,0.05); }
+        .logo { font-weight: 900; font-size: 26px; letter-spacing: -2px; color: #000; }
 
         .hero { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
-        .hero h1 { font-size: clamp(80px, 20vw, 250px); font-weight: 900; letter-spacing: -18px; line-height: 0.75; margin: 0; text-shadow: 0 0 60px rgba(0, 210, 255, 0.4); }
-        .hero p { font-size: 16px; letter-spacing: 12px; color: #888; text-transform: uppercase; margin-top: 60px; }
+        .hero h1 { font-size: clamp(80px, 18vw, 250px); font-weight: 900; letter-spacing: -15px; line-height: 0.8; margin: 0; color: #000; filter: drop-shadow(0 20px 50px rgba(0,0,0,0.1)); }
+        .hero p { font-size: 16px; letter-spacing: 8px; color: #86868b; text-transform: uppercase; margin-top: 50px; }
 
-        /* হাই-টেক ইকোসিস্টেম ড্যাশবোর্ড */
+        /* হাই-টেক গ্লাস কার্ড গ্রিড */
         .ecosystem-grid { padding: 150px 60px; max-width: 1600px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); gap: 60px; }
-        .app-node { background: rgba(255,255,255,0.03); backdrop-filter: blur(60px); border-radius: 70px; padding: 100px 60px; border: 1px solid rgba(255,255,255,0.06); transition: 1.2s cubic-bezier(0.19, 1, 0.22, 1); cursor: pointer; }
-        .app-node:hover { transform: translateY(-40px) scale(1.05); background: rgba(0, 210, 255, 0.05); border: 1px solid var(--accent); box-shadow: 0 60px 120px rgba(0, 210, 255, 0.1); }
-        .app-node h2 { font-size: 48px; margin-bottom: 25px; letter-spacing: -2px; }
-        .app-node p { font-size: 19px; color: #888; line-height: 1.7; }
+        .glass-box { background: var(--glass); backdrop-filter: blur(50px); border-radius: 70px; padding: 100px 60px; border: 1px solid rgba(0,0,0,0.04); transition: 1s cubic-bezier(0.19, 1, 0.22, 1); cursor: pointer; }
+        .glass-box:hover { transform: translateY(-30px) scale(1.03); box-shadow: 0 60px 120px rgba(0,0,0,0.08); border: 1px solid var(--accent); }
+        .glass-box h2 { font-size: 48px; margin-bottom: 25px; letter-spacing: -2px; }
 
-        /* মেগা কর্পোরেট ফুটার */
-        footer { background: #050505; padding: 150px 60px; border-top: 1px solid #111; margin-top: 150px; border-radius: 120px 120px 0 0; }
-        .footer-hub { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 80px; margin-bottom: 120px; }
-        .col h4 { font-size: 12px; text-transform: uppercase; color: #fff; margin-bottom: 35px; letter-spacing: 3px; }
-        .col a { display: block; color: #666; text-decoration: none; font-size: 14px; margin-bottom: 20px; transition: 0.4s; }
-        .col a:hover { color: var(--accent); transform: translateX(10px); }
+        /* প্রফেশনাল কর্পোরেট ফুটার */
+        footer { background: #fbfbfb; padding: 150px 60px; border-top: 1px solid #d2d2d7; margin-top: 150px; }
+        .footer-hub { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 60px; margin-bottom: 120px; }
+        .col h4 { font-size: 12px; text-transform: uppercase; color: #000; margin-bottom: 30px; letter-spacing: 2px; }
+        .col a { display: block; color: #86868b; text-decoration: none; font-size: 14px; margin-bottom: 18px; transition: 0.4s; }
+        .col a:hover { color: var(--accent); padding-left: 10px; }
 
-        .executive-signature { border-top: 1px solid #111; padding-top: 100px; text-align: left; }
-        .owner-name { font-size: clamp(40px, 8vw, 120px); font-weight: 900; letter-spacing: -6px; margin: 0; color: #fff; }
-        .owner-title { font-size: 14px; color: var(--accent); letter-spacing: 8px; text-transform: uppercase; margin-top: 10px; }
-        .quote { color: #555; max-width: 800px; margin-top: 50px; font-size: 18px; line-height: 1.8; font-style: italic; }
-        .legal-fineprint { margin-top: 150px; font-size: 11px; color: #222; text-align: center; border-top: 1px solid #0a0a0a; padding-top: 50px; line-height: 2; }
+        .signature-section { border-top: 1px solid #d2d2d7; padding-top: 100px; text-align: left; }
+        .owner-name { font-size: clamp(40px, 8vw, 100px); font-weight: 800; margin: 0; letter-spacing: -4px; color: #000; }
+        .owner-title { font-size: 12px; color: var(--accent); letter-spacing: 6px; text-transform: uppercase; margin-top: 10px; }
+        .vision-text { color: #86868b; max-width: 700px; margin-top: 40px; font-size: 18px; line-height: 1.8; font-style: italic; }
+        .legal-footer { margin-top: 150px; font-size: 11px; color: #ccc; text-align: center; border-top: 1px solid #eee; padding-top: 50px; line-height: 2; }
     </style>
 </head>
 <body>
 
-    <canvas id="galaxy-stage"></canvas>
+    <canvas id="canvas-stage"></canvas>
 
     <nav>
         <div class="logo">Qynct One</div>
-        <div style="font-size: 11px; letter-spacing: 4px; font-weight: 700; color: var(--accent);">GLOBAL SOVEREIGN NODE ACTIVE</div>
+        <div style="font-size: 11px; letter-spacing: 3px; font-weight: 700; color: var(--accent);">GLOBAL SOVEREIGN NODE ACTIVE</div>
     </nav>
 
     <section class="hero" data-aos="zoom-out">
         <h1>UNIFIED.</h1>
-        <p>The World in Your Pocket by Toslim Asad Mahi</p>
+        <p>Architected by Toslim Asad Mahi</p>
     </section>
 
     <div class="ecosystem-grid">
-        <div class="app-node" data-aos="fade-up">
+        <div class="glass-box" data-aos="fade-up">
             <small style="color: var(--accent); font-weight: 800;">PROTOCOL 01</small>
             <h2>Zyvact OS</h2>
-            <p>The first decentralized Social OS that functions without infrastructure. Total connectivity, total freedom.</p>
+            <p style="color: #424245; font-size: 18px;">The first decentralized Social Interface that functions beyond traditional networks. Pure connection, zero limits.</p>
         </div>
-        <div class="app-node" data-aos="fade-up" data-aos-delay="200">
+        <div class="glass-box" data-aos="fade-up" data-aos-delay="200">
             <small style="color: var(--accent); font-weight: 800;">PROTOCOL 02</small>
-            <h2>Q-Quantum Pay</h2>
-            <p>Financial sovereignty for the modern age. Your assets are anchored in the local mesh network.</p>
+            <h2>Quantum Pay</h2>
+            <p style="color: #424245; font-size: 18px;">Financial sovereignty for the modern age. Your assets are anchored in the local mesh, unhackable and absolute.</p>
         </div>
-        <div class="app-node" data-aos="fade-up" data-aos-delay="400">
+        <div class="glass-box" data-aos="fade-up" data-aos-delay="400">
             <small style="color: var(--accent); font-weight: 800;">PROTOCOL 03</small>
             <h2>Infinity Stream</h2>
-            <p>8K Cinematic entertainment delivered through neural nodes. Zero lag, zero network, zero limits.</p>
+            <p style="color: #424245; font-size: 18px;">Cinematic entertainment delivered through neural nodes. 16K content optimized for a world without boundaries.</p>
         </div>
     </div>
 
     <footer>
         <div class="footer-hub">
             <div class="col">
-                <h4>Solutions</h4>
-                <a href="#">Social OS</a>
-                <a href="#">Digital Banking</a>
+                <h4>Ecosystem</h4>
+                <a href="#">Zyvact Social</a>
+                <a href="#">Finance Core</a>
+                <a href="#">Infinity Stream</a>
                 <a href="#">Gaming Nodes</a>
-                <a href="#">Media Core</a>
                 <a href="#">Security Shield</a>
             </div>
             <div class="col">
-                <h4>Network</h4>
+                <h4>Infrastructure</h4>
                 <a href="#">Satellite Mesh</a>
                 <a href="#">Offline Engine</a>
-                <a href="#">Global Nodes</a>
-                <a href="#">Latency Report</a>
                 <a href="#">Neural Link</a>
+                <a href="#">Latency Report</a>
+                <a href="#">Global Hub</a>
+            </div>
+            <div class="col">
+                <h4>Corporate</h4>
+                <a href="#">About Qynct One</a>
+                <a href="#">Vision 2050</a>
+                <a href="#">Leadership</a>
+                <a href="#">Investor Relations</a>
+                <a href="#">Careers</a>
             </div>
             <div class="col">
                 <h4>Legal</h4>
@@ -98,30 +106,22 @@
                 <a href="#">User Rights</a>
                 <a href="#">Data Sovereignty</a>
                 <a href="#">Ethics Code</a>
-                <a href="#">Governance</a>
-            </div>
-            <div class="col">
-                <h4>Corporate</h4>
-                <a href="#">About Qynct One</a>
-                <a href="#">Leadership</a>
-                <a href="#">Investor Hub</a>
-                <a href="#">Press Kit</a>
-                <a href="#">Careers</a>
+                <a href="#">Transparency</a>
             </div>
         </div>
 
-        <div class="executive-signature">
+        <div class="signature-section">
             <h2 class="owner-name">TOSLIM ASAD MAHI</h2>
             <p class="owner-title">Founder & Chief Visionary Officer</p>
-            <p class="quote">
-                "Our mission is to shrink the complexity of human civilization into a single, decentralized reality—accessible to every human being for free, without boundaries."
+            <p class="vision-text">
+                "Our mission is to shrink the complexity of human civilization into a single, pocket-sized reality—independent of infrastructure and accessible to every human being for free."
             </p>
         </div>
 
-        <div class="legal-fineprint">
+        <div class="legal-footer">
             © 2026 Qynct One Global Ecosystem. Directed & Architected by Mahi. <br>
-            All Rights Reserved. This platform is governed by the Sovereign User Protocol. Patented Globally. <br>
-            Infrastructure: Deep Space Node v4.0.
+            All Rights Reserved. Patented Decentralized Technology. <br>
+            Powered by Crystal Node v5.0.
         </div>
     </footer>
 
@@ -129,55 +129,42 @@
     <script>
         AOS.init({ duration: 2000 });
 
-        // মেগা গ্যালাক্সি ইঞ্জিন v4.0
+        // মেগা হোয়াইট ৩ডি ইঞ্জিন
         const scene = new THREE.Scene();
         const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-        const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('galaxy-stage'), antialias: true, alpha: true });
+        const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('canvas-stage'), antialias: true, alpha: true });
         renderer.setSize(window.innerWidth, window.innerHeight);
 
-        // ১০,০০০ ডাইনামিক নক্ষত্র (Galaxy Starfield)
+        // ১০,০০০ ডাইনামিক হোয়াইট নক্ষত্র (Starfield)
         const starGeo = new THREE.BufferGeometry();
         const starPos = new Float32Array(10000 * 3);
-        for(let i=0; i<30000; i++) starPos[i] = (Math.random() - 0.5) * 60;
+        for(let i=0; i<30000; i++) starPos[i] = (Math.random() - 0.5) * 50;
         starGeo.setAttribute('position', new THREE.BufferAttribute(starPos, 3));
-        const starMat = new THREE.PointsMaterial({ size: 0.015, color: 0x00d2ff });
+        const starMat = new THREE.PointsMaterial({ size: 0.015, color: 0x0071e3 });
         const stars = new THREE.Points(starGeo, starMat);
         scene.add(stars);
 
-        // ৩ডি গ্লোয়িং সাইবার আর্থ (The Globe)
+        // ৩ডি ক্রিস্টাল গ্লোব (The Core Earth)
         const geometry = new THREE.SphereGeometry(4.5, 128, 128);
         const material = new THREE.MeshPhongMaterial({
-            color: 0x00d2ff,
+            color: 0x0071e3,
             wireframe: true,
             transparent: true,
-            opacity: 0.12
+            opacity: 0.08
         });
         const globe = new THREE.Mesh(geometry, material);
         scene.add(globe);
 
         const light = new THREE.PointLight(0xffffff, 2);
-        light.position.set(15, 15, 15);
+        light.position.set(10, 10, 10);
         scene.add(light);
-        scene.add(new THREE.AmbientLight(0xffffff, 0.3));
-        camera.position.z = 15;
-
-        // মাউস সেনসিটিভিটি
-        let mouseX = 0; let mouseY = 0;
-        document.addEventListener('mousemove', (e) => {
-            mouseX = (e.clientX / window.innerWidth - 0.5) * 1.5;
-            mouseY = (e.clientY / window.innerHeight - 0.5) * 1.5;
-        });
+        scene.add(new THREE.AmbientLight(0xffffff, 0.4));
+        camera.position.z = 12;
 
         function animate() {
             requestAnimationFrame(animate);
             globe.rotation.y += 0.001;
             stars.rotation.y += 0.0002;
-            
-            // স্মুথ ক্যামেরা ইন্টারঅ্যাকশন
-            camera.position.x += (mouseX - camera.position.x) * 0.05;
-            camera.position.y += (-mouseY - camera.position.y) * 0.05;
-            camera.lookAt(scene.position);
-            
             renderer.render(scene, camera);
         }
         animate();
