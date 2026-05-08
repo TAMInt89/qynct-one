@@ -3,162 +3,88 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Qynct One | The Universal Future</title>
-    <!-- প্রলেভেলের ফন্ট এবং অ্যানিমেশন লাইব্রেরি -->
+    <title>Qynct One | GOAT Level Ecosystem</title>
     <link href="https://unpkg.com" rel="stylesheet">
     <style>
-        :root {
-            --primary: #0071e3;
-            --glass: rgba(255, 255, 255, 0.7);
-            --bg: #fbfbfb;
+        :root { --accent: #0071e3; --bg: #ffffff; }
+        body { margin: 0; font-family: -apple-system, sans-serif; background: var(--bg); overflow-x: hidden; color: #1d1d1f; }
+        
+        /* ইলেকট্রিক অফলাইন পালস অ্যানিমেশন */
+        .pulse-bg {
+            position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            width: 600px; height: 600px; background: radial-gradient(circle, rgba(0,113,227,0.05) 0%, transparent 70%);
+            z-index: -1; animation: pulse 8s infinite alternate;
         }
+        @keyframes pulse { 0% { transform: translate(-50%, -50%) scale(1); } 100% { transform: translate(-50%, -50%) scale(1.5); } }
 
-        body {
-            margin: 0;
-            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif;
-            background: var(--bg);
-            color: #1d1d1f;
-            overflow-x: hidden;
+        nav { padding: 30px 50px; display: flex; justify-content: space-between; font-weight: 700; font-size: 20px; }
+        
+        .hero { height: 80vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
+        .hero h1 { font-size: clamp(50px, 10vw, 120px); letter-spacing: -5px; line-height: 0.9; margin: 0; font-weight: 800; }
+        .hero p { font-size: 24px; color: #86868b; margin-top: 20px; max-width: 600px; }
+
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)); gap: 30px; padding: 50px; max-width: 1400px; margin: 0 auto; }
+        .card { 
+            background: rgba(255,255,255,0.8); backdrop-filter: blur(30px); border-radius: 40px; padding: 60px;
+            border: 1px solid rgba(0,0,0,0.05); transition: 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
         }
-
-        /* রাজকীয় ব্যাকগ্রাউন্ড অ্যানিমেশন */
-        .bg-gradient {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: radial-gradient(circle at 50% 50%, #e0e0e0 0%, #fbfbfb 100%);
-            z-index: -1;
-        }
-
-        .nav {
-            padding: 20px 50px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            backdrop-filter: blur(10px);
-            position: sticky;
-            top: 0; z-index: 100;
-        }
-
-        .logo { font-weight: 700; font-size: 22px; letter-spacing: -1px; }
-
-        .hero {
-            height: 90vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-        }
-
-        .hero h1 {
-            font-size: clamp(40px, 8vw, 90px);
-            font-weight: 800;
-            margin: 0;
-            letter-spacing: -3px;
-            background: linear-gradient(180deg, #1d1d1f 0%, #434343 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .hero p {
-            font-size: 24px;
-            color: #86868b;
-            max-width: 700px;
-            margin-top: 20px;
-        }
-
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 40px;
-            padding: 100px 50px;
-            max-width: 1300px;
-            margin: 0 auto;
-        }
-
-        .card {
-            background: var(--glass);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            border-radius: 35px;
-            padding: 50px;
-            text-align: left;
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.02);
-        }
-
-        .card:hover {
-            transform: translateY(-15px);
-            box-shadow: 0 30px 60px rgba(0,0,0,0.08);
-            background: rgba(255, 255, 255, 0.9);
-        }
-
-        .badge {
-            display: inline-block;
-            padding: 6px 15px;
-            border-radius: 50px;
-            font-size: 12px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 20px;
-        }
-
-        .badge-upcoming { background: #e8e8ed; color: #86868b; }
-        .badge-dev { background: #0071e3; color: #fff; }
-
-        .card h2 { font-size: 32px; margin: 10px 0; letter-spacing: -1px; }
-        .card p { color: #86868b; line-height: 1.5; font-size: 18px; }
-
-        .footer {
-            text-align: center;
-            padding: 50px;
-            font-size: 14px;
-            color: #86868b;
+        .card:hover { transform: scale(1.02) translateY(-10px); box-shadow: 0 40px 80px rgba(0,0,0,0.1); }
+        
+        .status { font-size: 12px; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: 2px; display: block; margin-bottom: 15px; }
+        h2 { font-size: 40px; margin: 10px 0; letter-spacing: -2px; }
+        
+        /* অফলাইন ইন্ডিকেটর */
+        #offline-toast {
+            position: fixed; bottom: 20px; right: 20px; background: #1d1d1f; color: white;
+            padding: 15px 25px; border-radius: 15px; display: none; font-size: 14px; z-index: 1000;
         }
     </style>
 </head>
 <body>
+    <div class="pulse-bg"></div>
+    <nav><div>Qynct One</div><div>Est. 2026</div></nav>
 
-    <div class="bg-gradient"></div>
-
-    <nav class="nav">
-        <div class="logo">Qynct One</div>
-    </nav>
-
-    <section class="hero" data-aos="zoom-in" data-aos-duration="1500">
-        <h1>Redefining World.</h1>
-        <p>A unified ecosystem for humanity. Built for speed, security, and zero-boundaries.</p>
-    </section>
+    <div class="hero" data-aos="fade-up">
+        <h1>Think Beyond<br>The Network.</h1>
+        <p>A global empire built on absolute freedom. No Internet. No Limits. Just Humanity.</p>
+    </div>
 
     <div class="grid">
         <div class="card" data-aos="fade-up" data-aos-delay="100">
-            <span class="badge badge-dev">In Development</span>
+            <span class="status">● Signal: Offline Ready</span>
             <h2>Zyvact</h2>
-            <p>The next-gen Social OS. Connecting the world without boundaries or networks.</p>
+            <p>The World's first Decentralized Social OS. Chat, post, and connect even in the middle of the ocean.</p>
         </div>
-
+        <div class="card" data-aos="fade-up" data-aos-delay="200">
+            <span class="status">○ Coming Soon</span>
+            <h2>Q-Bank</h2>
+            <p>Financial freedom without borders. Global transactions at zero cost, powered by Qynct Core.</p>
+        </div>
         <div class="card" data-aos="fade-up" data-aos-delay="300">
-            <span class="badge badge-upcoming">Upcoming</span>
-            <h2>Q-Finance</h2>
-            <p>The smartest financial layer for the Qynct ecosystem. Decentralized & Secure.</p>
-        </div>
-
-        <div class="card" data-aos="fade-up" data-aos-delay="500">
-            <span class="badge badge-upcoming">Upcoming</span>
-            <h2>Q-Stream</h2>
-            <p>Experience entertainment in 8K quality, anywhere in the world, even offline.</p>
+            <span class="status">○ Under Dev</span>
+            <h2>Q-Vision</h2>
+            <p>8K Content streaming without a single byte of traditional internet. The future is local.</p>
         </div>
     </div>
 
-    <footer class="footer">
-        © 2026 Qynct One. Empowering the Global Citizen.
-    </footer>
+    <div id="offline-toast">⚡ Operating in Offline Mode</div>
 
-    <!-- স্ক্রল অ্যানিমেশন স্ক্রিপ্ট -->
     <script src="https://unpkg.com"></script>
     <script>
-        AOS.init();
+        AOS.init({ duration: 1500 });
+        
+        // অফলাইন মোড ডিটেক্টর
+        window.addEventListener('offline', () => {
+            document.getElementById('offline-toast').style.display = 'block';
+        });
+        window.addEventListener('online', () => {
+            document.getElementById('offline-toast').style.display = 'none';
+        });
+
+        // GOAT Level Service Worker (অফলাইন সাপোর্ট)
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('sw.js');
+        }
     </script>
 </body>
 </html>
