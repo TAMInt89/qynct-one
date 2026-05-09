@@ -1,23 +1,551 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>QYNCT ONE</title>
-<meta name="description" content="The World. Unified Beyond Internet." />
-<style>
-:root{--bg:#edf2f8;--bg2:#d9e3f2;--glass:rgba(255,255,255,.58);--line:rgba(255,255,255,.7);--text:#0f172a;--muted:#607086;--dark:#09111f}
-*{box-sizing:border-box;margin:0;padding:0} html{scroll-behavior:smooth} body{font-family:Inter,system-ui,sans-serif;color:var(--text);background:radial-gradient(circle at 20% 20%,#fff,transparent 28%),radial-gradient(circle at 80% 10%,#dbe7ff,transparent 26%),linear-gradient(135deg,var(--bg),var(--bg2));overflow-x:hidden}
-body:before{content:"";position:fixed;inset:0;pointer-events:none;background:linear-gradient(rgba(255,255,255,.12) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.12) 1px,transparent 1px);background-size:42px 42px;opacity:.35}
-.wrap{width:min(92%,1400px);margin:auto}.glass{background:var(--glass);backdrop-filter:blur(24px) saturate(180%);border:1px solid var(--line);box-shadow:0 30px 80px rgba(160,175,205,.25);border-radius:30px}
-nav{position:fixed;left:50%;top:20px;transform:translateX(-50%);width:min(92%,1320px);z-index:100;padding:14px 24px;display:flex;justify-content:space-between;align-items:center}.brand{font-weight:800;letter-spacing:1px}.navbtn{text-decoration:none;color:#111;padding:12px 20px;border-radius:999px;background:#fff;border:1px solid #fff8}
-.hero{min-height:100vh;display:flex;align-items:center;padding-top:90px}.heroGrid{display:grid;grid-template-columns:1.1fr .9fr;gap:30px;align-items:center}.panel{padding:56px}.title{font-size:clamp(64px,10vw,145px);font-weight:900;line-height:.88;letter-spacing:-4px}.sub{margin-top:20px;font-size:clamp(18px,2vw,28px);color:var(--muted);line-height:1.5}.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:36px}.stat{padding:22px}.stat b{display:block;font-size:36px}.orbWrap{position:relative;height:640px;display:grid;place-items:center}.orb{width:430px;height:430px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#fff, #dfe9ff 30%, #b7c8f0 55%, #f8fbff 72%, transparent 74%);box-shadow:0 0 80px #fff,0 0 160px rgba(255,255,255,.9),0 0 220px rgba(170,190,255,.55);animation:float 6s ease-in-out infinite;position:relative}.orb:before,.orb:after{content:"";position:absolute;inset:-30px;border:1px solid rgba(255,255,255,.7);border-radius:50%;animation:spin 14s linear infinite}.orb:after{inset:-70px;animation-duration:22s;opacity:.7}.section{padding:120px 0}.network,.darkPanel{padding:50px}.nodes{height:420px;position:relative}.node{position:absolute;width:74px;height:74px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(135deg,#fff,#dce5f3);box-shadow:0 15px 35px rgba(0,0,0,.08);animation:float 5s ease-in-out infinite}.dark{background:linear-gradient(160deg,#0c1425,#020617);color:#fff;border-radius:46px 46px 0 0}.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:36px}.card{padding:30px;border-radius:26px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12)}.footer{margin-top:60px;padding-top:30px;border-top:1px solid rgba(255,255,255,.1)}
-@keyframes spin{to{transform:rotate(360deg)}} @keyframes float{50%{transform:translateY(-12px)}} @media(max-width:980px){.heroGrid,.stats,.cards{grid-template-columns:1fr}.orbWrap{height:420px}.orb{width:260px;height:260px}}
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Qynct One — Unified Beyond Internet</title>
+
+  <style>
+    :root{
+      --bg:#eef2f7;
+      --bg2:#dfe5ee;
+      --white:rgba(255,255,255,.62);
+      --line:rgba(255,255,255,.45);
+      --text:#0d1321;
+      --muted:#5c6678;
+      --silver:#cfd6df;
+      --dark:#0f1726;
+      --dark2:#121a2f;
+      --glow:0 30px 80px rgba(160,175,205,.28);
+      --glass:blur(24px) saturate(180%);
+      --radius:28px;
+      --max:1400px;
+    }
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+    body{
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(255,255,255,.95), transparent 30%),
+        radial-gradient(circle at 80% 10%, rgba(211,220,235,.9), transparent 28%),
+        radial-gradient(circle at 50% 60%, rgba(240,245,255,.95), transparent 38%),
+        linear-gradient(135deg,var(--bg),var(--bg2));
+      color:var(--text);
+      overflow-x:hidden;
+    }
+
+    body::before{
+      content:"";
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      background:
+        linear-gradient(rgba(255,255,255,.16) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.16) 1px, transparent 1px);
+      background-size:48px 48px;
+      mask-image:linear-gradient(to bottom, black 30%, transparent 100%);
+      opacity:.45;
+    }
+
+    .container{
+      width:min(92%, var(--max));
+      margin:auto;
+    }
+
+    .glass{
+      background:var(--white);
+      backdrop-filter:var(--glass);
+      -webkit-backdrop-filter:var(--glass);
+      border:1px solid var(--line);
+      box-shadow:var(--glow);
+    }
+
+    section{
+      position:relative;
+    }
+
+    /* HERO */
+    .hero{
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .hero::before,
+    .hero::after{
+      content:"";
+      position:absolute;
+      border-radius:50%;
+      filter:blur(80px);
+      opacity:.8;
+    }
+
+    .hero::before{
+      width:420px;
+      height:420px;
+      background:linear-gradient(135deg,#ffffff,#c6d3eb);
+      top:10%;
+      left:-100px;
+    }
+
+    .hero::after{
+      width:520px;
+      height:520px;
+      background:linear-gradient(135deg,#dbe7ff,#ffffff);
+      right:-120px;
+      bottom:10%;
+    }
+
+    .hero-panel{
+      position:relative;
+      z-index:2;
+      padding:48px;
+      border-radius:40px;
+    }
+
+    .eyebrow{
+      display:inline-block;
+      padding:10px 18px;
+      border-radius:999px;
+      font-size:12px;
+      letter-spacing:2px;
+      text-transform:uppercase;
+      color:#4f5b70;
+      margin-bottom:28px;
+      background:rgba(255,255,255,.72);
+      border:1px solid rgba(255,255,255,.7);
+    }
+
+    h1{
+      font-size:clamp(54px,10vw,140px);
+      line-height:.92;
+      letter-spacing:-4px;
+      font-weight:800;
+      max-width:1000px;
+    }
+
+    .gradient{
+      background:linear-gradient(135deg,#111827,#75839b 45%,#ffffff 100%);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+    }
+
+    .subtitle{
+      margin-top:24px;
+      font-size:clamp(18px,2vw,28px);
+      color:var(--muted);
+      max-width:720px;
+      line-height:1.5;
+    }
+
+    .hero-grid{
+      margin-top:48px;
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:18px;
+    }
+
+    .metric{
+      padding:26px;
+      border-radius:24px;
+    }
+
+    .metric h3{
+      font-size:38px;
+      margin-bottom:8px;
+      font-weight:800;
+    }
+
+    .metric p{
+      color:var(--muted);
+      font-size:14px;
+      letter-spacing:.3px;
+    }
+
+    /* SECTION BASE */
+    .block{
+      padding:120px 0;
+    }
+
+    .title{
+      font-size:clamp(34px,5vw,70px);
+      letter-spacing:-2px;
+      margin-bottom:16px;
+    }
+
+    .desc{
+      max-width:780px;
+      color:var(--muted);
+      line-height:1.7;
+      font-size:18px;
+    }
+
+    /* ZYVACT */
+    .network-card{
+      margin-top:50px;
+      padding:42px;
+      border-radius:36px;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .network{
+      position:relative;
+      min-height:560px;
+    }
+
+    .node{
+      position:absolute;
+      width:78px;
+      height:78px;
+      border-radius:50%;
+      background:linear-gradient(135deg,#ffffff,#d6deea);
+      border:2px solid rgba(255,255,255,.9);
+      box-shadow:0 10px 30px rgba(80,90,120,.18);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-weight:700;
+      color:#3c4759;
+    }
+
+    .pulse{
+      position:absolute;
+      inset:-10px;
+      border-radius:50%;
+      border:2px solid rgba(145,160,190,.35);
+      animation:pulse 3s infinite;
+    }
+
+    @keyframes pulse{
+      0%{transform:scale(.8);opacity:1}
+      100%{transform:scale(1.55);opacity:0}
+    }
+
+    .line{
+      position:absolute;
+      height:2px;
+      transform-origin:left center;
+      background:linear-gradient(90deg, rgba(125,140,170,.45), transparent);
+    }
+
+    /* DARK SECTION */
+    .dark{
+      background:linear-gradient(160deg,var(--dark),var(--dark2));
+      color:white;
+      border-radius:42px 42px 0 0;
+      margin-top:80px;
+      overflow:hidden;
+    }
+
+    .dark .desc{
+      color:#b8c3d9;
+    }
+
+    .grid-panels{
+      margin-top:55px;
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:22px;
+    }
+
+    .dark-card{
+      padding:34px;
+      border-radius:28px;
+      background:rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.1);
+      backdrop-filter:blur(14px);
+      min-height:240px;
+      transition:.35s ease;
+    }
+
+    .dark-card:hover{
+      transform:translateY(-6px);
+      background:rgba(255,255,255,.09);
+    }
+
+    .icon{
+      width:72px;
+      height:72px;
+      border-radius:20px;
+      display:grid;
+      place-items:center;
+      margin-bottom:24px;
+      background:linear-gradient(135deg, rgba(255,255,255,.18), rgba(255,255,255,.05));
+      font-size:34px;
+    }
+
+    .dark-card h3{
+      font-size:24px;
+      margin-bottom:12px;
+    }
+
+    .dark-card p{
+      color:#c1cade;
+      line-height:1.7;
+    }
+
+    /* FOOTER */
+    footer{
+      padding:90px 0;
+      color:white;
+    }
+
+    .footer-grid{
+      display:grid;
+      grid-template-columns:2fr 1fr 1fr 1fr;
+      gap:40px;
+      margin-top:50px;
+    }
+
+    .footer-col h4{
+      margin-bottom:20px;
+      color:white;
+      font-size:16px;
+      letter-spacing:.5px;
+    }
+
+    .footer-col a{
+      display:block;
+      text-decoration:none;
+      color:#9fafc8;
+      margin:10px 0;
+      transition:.25s;
+    }
+
+    .footer-col a:hover{
+      color:white;
+      transform:translateX(4px);
+    }
+
+    .signature{
+      margin-top:80px;
+      padding-top:40px;
+      border-top:1px solid rgba(255,255,255,.12);
+      display:flex;
+      justify-content:space-between;
+      gap:20px;
+      align-items:end;
+      flex-wrap:wrap;
+    }
+
+    .signature h2{
+      font-size:clamp(28px,4vw,54px);
+      line-height:1.1;
+      max-width:700px;
+    }
+
+    .signature span{
+      color:#9fb1cf;
+      display:block;
+      margin-top:10px;
+      font-size:14px;
+      letter-spacing:1px;
+      text-transform:uppercase;
+    }
+
+    @media (max-width:980px){
+      .hero-grid,
+      .grid-panels,
+      .footer-grid{
+        grid-template-columns:1fr;
+      }
+
+      .hero-panel{
+        padding:28px;
+      }
+
+      .network{
+        min-height:700px;
+      }
+    }
+  </style>
 </head>
 <body>
-<nav class="glass wrap"><div class="brand">QYNCT ONE</div><a class="navbtn" href="#director">Director Access</a></nav>
-<section class="hero"><div class="wrap heroGrid"><div class="glass panel"><div class="title">QYNCT<br>ONE</div><div class="sub">The World. Unified Beyond Internet.</div><div class="stats"><div class="glass stat"><b>8.2B+</b>Humans</div><div class="glass stat"><b>195+</b>Nations</div><div class="glass stat"><b>99.99%</b>Trust</div><div class="glass stat"><b>∞</b>Scale</div></div></div><div class="orbWrap"><div class="orb"></div></div></div></section>
-<section class="section"><div class="wrap"><div class="glass network"><h2 style="font-size:56px">ZYVACT</h2><p style="color:var(--muted);margin-top:10px">The Social Fabric of Humanity</p><div class="nodes"><div class="node" style="left:45%;top:38%">AI</div><div class="node" style="left:10%;top:10%">01</div><div class="node" style="right:10%;top:12%">02</div><div class="node" style="left:18%;bottom:10%">03</div><div class="node" style="right:18%;bottom:10%">04</div></div></div></div></section>
-<section class="dark"><div class="wrap section darkPanel"><h2 style="font-size:62px">Quantum Sovereignty</h2><div class="cards"><div class="card">Quantum Security</div><div class="card">Planetary Protocol</div><div class="card">Infinite Compute Fabric</div></div><div class="footer" id="director"><h2 style="font-size:34px">Toslim Asad Mahi</h2><p style="margin-top:8px;color:#b6c2d7">Founder & Chief Visionary Officer</p></div></div></section>
-</body></html>
+
+  <section class="hero">
+    <div class="container">
+      <div class="hero-panel glass">
+        <div class="eyebrow">Future Enterprise Interface</div>
+        <h1 class="gradient">QYNCT ONE</h1>
+        <p class="subtitle">
+          The World. Unified Beyond Internet.
+          <br>
+          Building sovereign intelligence infrastructure, global-scale digital trust,
+          and the next universal operating fabric for humanity.
+        </p>
+
+        <div class="hero-grid">
+          <div class="metric glass">
+            <h3>8.2B+</h3>
+            <p>Global Human Reach</p>
+          </div>
+          <div class="metric glass">
+            <h3>195+</h3>
+            <p>Nation-State Coverage</p>
+          </div>
+          <div class="metric glass">
+            <h3>99.99%</h3>
+            <p>Infrastructure Reliability</p>
+          </div>
+          <div class="metric glass">
+            <h3>∞</h3>
+            <p>Scalable Intelligence</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="container">
+      <h2 class="title">Zyvact — Social Fabric</h2>
+      <p class="desc">
+        A premium connective layer where identity, communication,
+        trust, and intelligence operate in one unified ecosystem.
+      </p>
+
+      <div class="network-card glass">
+        <div class="network" id="network">
+          <div class="node" style="top:40%;left:45%;">AI<div class="pulse"></div></div>
+          <div class="node" style="top:10%;left:18%;">01</div>
+          <div class="node" style="top:18%;right:14%;">02</div>
+          <div class="node" style="bottom:18%;left:14%;">03</div>
+          <div class="node" style="bottom:10%;right:18%;">04</div>
+          <div class="node" style="top:50%;left:8%;">05</div>
+          <div class="node" style="top:52%;right:8%;">06</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="dark">
+    <div class="container block">
+      <h2 class="title">Quantum Sovereignty</h2>
+      <p class="desc">
+        Security architecture for post-platform civilization — resilient,
+        trusted, autonomous, and globally interoperable.
+      </p>
+
+      <div class="grid-panels">
+        <div class="dark-card">
+          <div class="icon">⬢</div>
+          <h3>Sovereign Identity</h3>
+          <p>
+            Persistent trust layers, zero-friction authentication,
+            and private digital existence by design.
+          </p>
+        </div>
+
+        <div class="dark-card">
+          <div class="icon">🛡</div>
+          <h3>Unified Defense Grid</h3>
+          <p>
+            Adaptive AI protection architecture built for planetary-scale systems.
+          </p>
+        </div>
+
+        <div class="dark-card">
+          <div class="icon">◫</div>
+          <h3>Infinite Compute Fabric</h3>
+          <p>
+            Distributed intelligence infrastructure with enterprise-grade resilience.
+          </p>
+        </div>
+      </div>
+
+      <footer>
+        <div class="footer-grid">
+          <div>
+            <h2 style="font-size:42px;line-height:1.05;">Qynct One</h2>
+            <p style="margin-top:18px;color:#9fafc8;line-height:1.8;max-width:520px;">
+              Architecting the operating system of connected civilization —
+              elegant, sovereign, and timeless.
+            </p>
+          </div>
+
+          <div class="footer-col">
+            <h4>Legal</h4>
+            <a href="#">Privacy Framework</a>
+            <a href="#">Governance</a>
+            <a href="#">Compliance</a>
+            <a href="#">Security Charter</a>
+          </div>
+
+          <div class="footer-col">
+            <h4>Ecosystem</h4>
+            <a href="#">Zyvact</a>
+            <a href="#">Identity Grid</a>
+            <a href="#">AI Fabric</a>
+            <a href="#">Global Nexus</a>
+          </div>
+
+          <div class="footer-col">
+            <h4>Infrastructure</h4>
+            <a href="#">Quantum Mesh</a>
+            <a href="#">Compute Layer</a>
+            <a href="#">Trust Network</a>
+            <a href="#">Core Systems</a>
+          </div>
+        </div>
+
+        <div class="signature">
+          <div>
+            <h2>Toslim Asad Mahi</h2>
+            <span>Founder & Chief Visionary Officer</span>
+          </div>
+          <div style="color:#93a5c2;">© 2026 Qynct One — Unified Beyond Internet</div>
+        </div>
+      </footer>
+    </div>
+  </section>
+
+  <script>
+    // draw realistic connection lines in Social Fabric section
+    const network = document.getElementById("network");
+    const nodes = [...network.querySelectorAll(".node")];
+    const center = nodes[0];
+
+    function connect(a,b){
+      const aRect = a.getBoundingClientRect();
+      const bRect = b.getBoundingClientRect();
+      const pRect = network.getBoundingClientRect();
+
+      const x1 = aRect.left + aRect.width/2 - pRect.left;
+      const y1 = aRect.top + aRect.height/2 - pRect.top;
+      const x2 = bRect.left + bRect.width/2 - pRect.left;
+      const y2 = bRect.top + bRect.height/2 - pRect.top;
+
+      const dx = x2-x1;
+      const dy = y2-y1;
+      const len = Math.sqrt(dx*dx + dy*dy);
+      const ang = Math.atan2(dy,dx) * 180 / Math.PI;
+
+      const line = document.createElement("div");
+      line.className = "line";
+      line.style.width = len + "px";
+      line.style.left = x1 + "px";
+      line.style.top = y1 + "px";
+      line.style.transform = `rotate(${ang}deg)`;
+
+      network.appendChild(line);
+    }
+
+    window.addEventListener("load",()=>{
+      nodes.slice(1).forEach(n=>connect(center,n));
+    });
+  </script>
+
+</body>
+</html>
